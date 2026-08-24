@@ -1,0 +1,8 @@
+release_tag=mui-node-list-20260824-599f1c3
+firmware_repo=RCGV1/firmware-Fork
+firmware_ref=599f1c36ec5738cae8d330b095ff9f3f868b1ea3
+device_ui_repo=RCGV1/device-ui
+device_ui_ref=9e84d74cb9bc4f2ef4cc577912b3d11b2ad29504
+target=t-deck-tft
+compile_definition=DEVICE_UI_MUI_VIRTUAL_NODE_LIST
+build_timestamp=2026-08-24T19:22:39Z

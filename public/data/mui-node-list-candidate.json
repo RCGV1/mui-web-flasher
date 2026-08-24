@@ -1,0 +1,78 @@
+{
+  "id": "v2.8.0.599f1c3",
+  "version": "2.8.0.599f1c3",
+  "title": "MUI virtual node-list tester firmware (T-Deck)",
+  "releaseNotes": "## Virtual MUI node-list tester firmware\n\nTester-only Meshtastic firmware for validating the MUI virtual node-list implementation. This is not a Meshtastic stable release.\n\nBefore and after flashing, please test: add/receive 250 nodes; scroll rapidly; update an off-screen node; filter, reorder, and resync; look for stale rows, crashes, or memory problems; then report device target and result.\n\nSource is pinned to RCGV1/firmware-Fork@599f1c36ec5738cae8d330b095ff9f3f868b1ea3 with RCGV1/device-ui@9e84d74cb9bc4f2ef4cc577912b3d11b2ad29504 and DEVICE_UI_MUI_VIRTUAL_NODE_LIST enabled.",
+  "releaseTag": "mui-node-list-20260824-599f1c3",
+  "buildTimestamp": "2026-08-24T19:22:39Z",
+  "testerNotes": [
+    "Add/receive 250 nodes.",
+    "Scroll rapidly through the node list.",
+    "Update an off-screen node.",
+    "Filter, reorder, and resync.",
+    "Look for stale rows, crashes, or memory problems.",
+    "Report device target and result."
+  ],
+  "source": {
+    "firmware": {
+      "repo": "RCGV1/firmware-Fork",
+      "branch": "candidate/mui-node-list-tester-20260824",
+      "commit": "599f1c36ec5738cae8d330b095ff9f3f868b1ea3"
+    },
+    "deviceUi": {
+      "repo": "RCGV1/device-ui",
+      "branch": "candidate/virtual-node-list-improvement-20260824",
+      "commit": "9e84d74cb9bc4f2ef4cc577912b3d11b2ad29504"
+    },
+    "compileDefinition": "DEVICE_UI_MUI_VIRTUAL_NODE_LIST"
+  },
+  "targets": [
+    {
+      "board": "t-deck-tft",
+      "platform": "esp32s3",
+      "device": {
+        "hwModel": 50,
+        "hwModelSlug": "T_DECK",
+        "platformioTarget": "t-deck",
+        "architecture": "esp32-s3",
+        "activelySupported": true,
+        "displayName": "LILYGO T-Deck — MUI virtual node-list tester",
+        "supportLevel": 1,
+        "tags": [
+          "LilyGo",
+          "MUI tester"
+        ],
+        "images": [
+          "t-deck.svg"
+        ],
+        "partitionScheme": "16MB",
+        "requiresDfu": true,
+        "hasMui": true
+      },
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-599f1c3/firmware-t-deck-tft-2.8.0.599f1c3.mt.json",
+      "manifestSha256": "6009d733e33786dd96ae3da0ee465aaaa4c7dddbdb492993637ebae2d65a55b0",
+      "files": {
+        "firmware-t-deck-tft-2.8.0.599f1c3.mt.json": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-599f1c3/firmware-t-deck-tft-2.8.0.599f1c3.mt.json",
+          "sha256": "6009d733e33786dd96ae3da0ee465aaaa4c7dddbdb492993637ebae2d65a55b0",
+          "bytes": 2052
+        },
+        "firmware-t-deck-tft-2.8.0.599f1c3.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-599f1c3/firmware-t-deck-tft-2.8.0.599f1c3.bin",
+          "sha256": "0c8fb9231a304c78bc7d6fb7e0e6f439d6d6d623745e5a272648034ff34c4859",
+          "bytes": 3864592
+        },
+        "firmware-t-deck-tft-2.8.0.599f1c3.factory.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-599f1c3/firmware-t-deck-tft-2.8.0.599f1c3.factory.bin",
+          "sha256": "fe891495d86b152a1dd8d5684ec38e87c393fd4874b2188ef61a9bd3fdeccc00",
+          "bytes": 3930128
+        },
+        "littlefs-t-deck-tft-2.8.0.599f1c3.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-599f1c3/littlefs-t-deck-tft-2.8.0.599f1c3.bin",
+          "sha256": "65fe7daf9f64dae16b20aa47b74e88576e402f2fd3c268c0537a344ed6c24104",
+          "bytes": 3538944
+        }
+      }
+    }
+  ]
+}

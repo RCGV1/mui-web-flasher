@@ -7,6 +7,7 @@ import {
 import { applyEventDeviceOverrides } from '~/utils/eventDevices'
 import { addRumAction, boardAttributes, eventAttributes, setTelemetryContext } from '~/utils/telemetry'
 import { isMuiTesterTarget, muiTesterOnly, publicPath } from '~/utils/muiTester'
+import { getMuiCandidateDevices } from '~/utils/muiCandidate'
 
 import { MeshDevice } from '@meshtastic/core'
 import { TransportWebSerial } from '@meshtastic/transport-web-serial'
@@ -153,6 +154,11 @@ export const useDeviceStore = defineStore('device', {
   },
   actions: {
     async fetchList() {
+      if (muiTesterOnly) {
+        this.setTargetsList(await getMuiCandidateDevices())
+        return
+      }
+
       try {
         // First try to fetch from the API
         const targets = await firmwareApi.get<DeviceHardware[]>()

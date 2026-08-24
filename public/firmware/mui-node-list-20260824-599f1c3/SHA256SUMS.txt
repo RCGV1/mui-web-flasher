@@ -1,0 +1,4 @@
+0c8fb9231a304c78bc7d6fb7e0e6f439d6d6d623745e5a272648034ff34c4859  release/mui-node-list-20260824-599f1c3/firmware-t-deck-tft-2.8.0.599f1c3.bin
+fe891495d86b152a1dd8d5684ec38e87c393fd4874b2188ef61a9bd3fdeccc00  release/mui-node-list-20260824-599f1c3/firmware-t-deck-tft-2.8.0.599f1c3.factory.bin
+6009d733e33786dd96ae3da0ee465aaaa4c7dddbdb492993637ebae2d65a55b0  release/mui-node-list-20260824-599f1c3/firmware-t-deck-tft-2.8.0.599f1c3.mt.json
+65fe7daf9f64dae16b20aa47b74e88576e402f2fd3c268c0537a344ed6c24104  release/mui-node-list-20260824-599f1c3/littlefs-t-deck-tft-2.8.0.599f1c3.bin

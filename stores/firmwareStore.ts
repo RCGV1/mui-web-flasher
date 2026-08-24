@@ -41,6 +41,13 @@ import { extractZipEntry } from '~/utils/zipUtils'
 import { buildPrReleaseNotes } from '~/utils/prBuild'
 import { t } from '~/utils/i18n'
 import { muiTesterOnly } from '~/utils/muiTester'
+import {
+  fetchMuiCandidateTargetManifest,
+  getMuiCandidateFileUrl,
+  getMuiCandidateFirmwareResource,
+  getMuiCandidateReleaseManifest,
+  MUI_CANDIDATE_ID,
+} from '~/utils/muiCandidate'
 
 import type {
   DeviceHardware,
@@ -230,6 +237,16 @@ export const useFirmwareStore = defineStore('firmware', {
       this.hasSeenReleaseNotes = true
     },
     async fetchList() {
+      if (muiTesterOnly) {
+        const candidate = await getMuiCandidateFirmwareResource()
+        this.stable = []
+        this.alpha = [candidate]
+        this.previews = []
+        this.pullRequests = []
+        await this.setSelectedFirmware(candidate)
+        return
+      }
+
       // Skip fetching firmware list in event mode - use locked firmware only
       if (eventMode.enabled) {
         console.log('Event mode enabled, skipping firmware API fetch')
@@ -461,8 +478,12 @@ export const useFirmwareStore = defineStore('firmware', {
         this.releaseManifest = { version: firmware.prBuild.version, targets: firmware.prBuild.targets }
       }
 
+      if (muiTesterOnly && firmware.id === MUI_CANDIDATE_ID) {
+        this.releaseManifest = await getMuiCandidateReleaseManifest()
+      }
+
       // Fetch release notes if not already present
-      if (firmware.id && !firmware.prBuild && (!firmware.release_notes || firmware.release_notes.trim().length === 0)) {
+      if (firmware.id && !firmware.prBuild && !(muiTesterOnly && firmware.id === MUI_CANDIDATE_ID) && (!firmware.release_notes || firmware.release_notes.trim().length === 0)) {
         firmware.release_notes = await fetchReleaseNotes(firmware.id)
       }
 
@@ -472,7 +493,7 @@ export const useFirmwareStore = defineStore('firmware', {
       }
 
       // Fetch the release manifest that lists all available targets
-      if (firmware.id && !firmware.prBuild) {
+      if (firmware.id && !firmware.prBuild && !(muiTesterOnly && firmware.id === MUI_CANDIDATE_ID)) {
         const releaseManifest = await fetchReleaseManifest(firmware.id)
         if (releaseManifest) {
           this.releaseManifest = releaseManifest
@@ -487,6 +508,10 @@ export const useFirmwareStore = defineStore('firmware', {
       })
     },
     getReleaseFileUrl(fileName: string): string {
+      if (muiTesterOnly && this.selectedFirmware?.id === MUI_CANDIDATE_ID) {
+        const releaseTag = 'mui-node-list-20260824-599f1c3'
+        return `https://rcgv1.github.io/mui-web-flasher/firmware/${releaseTag}/${fileName}`
+      }
       // PR build files come from artifact zips, not meshtastic.github.io
       if (!this.selectedFirmware?.id || this.selectedFirmware.prBuild) return ''
       return `${getFirmwareBaseUrl(this.selectedFirmware.id)}/${fileName}`
@@ -653,6 +678,24 @@ export const useFirmwareStore = defineStore('firmware', {
       // Check if the target exists in the release manifest
       if (this.releaseManifest && !this.isTargetAvailable(targetBoard)) {
         console.warn(`Target ${targetBoard} is not available in release manifest, falling back to legacy flashing`)
+        this.manifest = undefined
+        this.hasManifest = false
+        return false
+      }
+
+      if (muiTesterOnly && this.selectedFirmware.id === MUI_CANDIDATE_ID) {
+        try {
+          const manifest = await fetchMuiCandidateTargetManifest(targetBoard)
+          if (manifest) {
+            this.manifest = manifest
+            this.hasManifest = true
+            console.log(`Loaded MUI candidate manifest for ${targetBoard}`)
+            return true
+          }
+        }
+        catch (error) {
+          console.error(`Error loading MUI candidate manifest for ${targetBoard}:`, error)
+        }
         this.manifest = undefined
         this.hasManifest = false
         return false
@@ -1124,6 +1167,20 @@ export const useFirmwareStore = defineStore('firmware', {
         return convertToBinaryString(new Uint8Array(arrayBuffer))
       }
       if (this.selectedFirmware?.id) {
+        if (muiTesterOnly && this.selectedFirmware.id === MUI_CANDIDATE_ID) {
+          const url = await getMuiCandidateFileUrl(fileName)
+          if (!url) {
+            throw new Error(`MUI candidate manifest does not list ${fileName}`)
+          }
+          const response = await fetch(url)
+          if (!response.ok) {
+            throw new Error(`Could not download ${fileName} (HTTP ${response.status} from ${url})`)
+          }
+          const blob = await response.blob()
+          const data = await blob.arrayBuffer()
+          return convertToBinaryString(new Uint8Array(data))
+        }
+
         const baseUrl = getFirmwareBaseUrl(this.selectedFirmware.id)
         const url = `${baseUrl}/${fileName}`
         const response = await fetch(url)

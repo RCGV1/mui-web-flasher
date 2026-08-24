@@ -1,6 +1,61 @@
 <template>
   <div class="space-y-6">
     <ReleaseNotes />
+    <div
+      v-if="muiTesterOnly && firmwareStore.canShowFlash"
+      class="p-4 rounded-lg shadow-sm step-card border border-meshtastic/50"
+    >
+      <h3 class="mb-2 text-lg font-semibold text-theme">
+        Virtual MUI node-list tester firmware
+      </h3>
+      <p class="text-sm text-theme-muted">
+        This flasher only exposes targets backed by artifacts compiled with
+        <code>DEVICE_UI_MUI_VIRTUAL_NODE_LIST</code>
+        and the virtual node-list candidate code.
+      </p>
+      <dl class="mt-3 grid grid-cols-1 gap-2 text-xs text-theme-muted sm:grid-cols-2">
+        <div>
+          <dt class="font-semibold text-theme">
+            Device target
+          </dt>
+          <dd>
+            {{ deviceStore.$state.selectedTarget?.displayName }} / {{ targetBoard }}
+          </dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-theme">
+            Build timestamp
+          </dt>
+          <dd>
+            {{ candidateManifest?.buildTimestamp || 'Loading manifest…' }}
+          </dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-theme">
+            Firmware source
+          </dt>
+          <dd class="break-all">
+            {{ shortFirmwareSource }}
+          </dd>
+        </div>
+        <div>
+          <dt class="font-semibold text-theme">
+            Artifact SHA256
+          </dt>
+          <dd class="break-all">
+            {{ primaryArtifactSha || 'Loading manifest…' }}
+          </dd>
+        </div>
+      </dl>
+      <ul class="mt-3 list-disc space-y-1 ps-5 text-sm text-theme-muted">
+        <li
+          v-for="note in candidateManifest?.testerNotes || defaultTesterNotes"
+          :key="note"
+        >
+          {{ note }}
+        </li>
+      </ul>
+    </div>
     <ol
       v-if="firmwareStore.canShowFlash"
       class="relative ms-3.5 mb-6 border-theme-left"
@@ -197,6 +252,26 @@
           />
         </div>
       </div>
+      <div
+        v-if="muiTesterOnly && firmwareStore.$state.flashPercentDone >= 100 && !firmwareStore.$state.isFlashing"
+        class="p-4 rounded-lg shadow-sm step-card border border-meshtastic/50"
+      >
+        <h3 class="mb-2 text-lg font-semibold text-theme">
+          Virtual MUI node-list tester flash completed
+        </h3>
+        <p class="text-sm text-theme-muted">
+          Result: flash write completed for {{ deviceStore.$state.selectedTarget?.displayName }} / {{ targetBoard }}.
+          Please report this device target, pass/fail result, and any stale rows, crashes, or memory problems.
+        </p>
+        <ul class="mt-3 list-disc space-y-1 ps-5 text-sm text-theme-muted">
+          <li
+            v-for="note in candidateManifest?.testerNotes || defaultTesterNotes"
+            :key="note"
+          >
+            {{ note }}
+          </li>
+        </ul>
+      </div>
     </div>
     <!-- Terminal -->
     <div id="terminal" class="rounded-lg overflow-hidden relative z-10 bg-black/40" />
@@ -218,12 +293,27 @@ import { useFirmwareStore } from '../../stores/firmwareStore'
 import { useToastStore } from '../../stores/toastStore'
 import { listZipEntries } from '~/utils/zipUtils'
 import { muiTesterOnly, publicPath } from '~/utils/muiTester'
+import {
+  type CandidateManifest,
+  getMuiCandidateTarget,
+  loadMuiCandidateManifest,
+} from '~/utils/muiCandidate'
 import ReleaseNotes from './ReleaseNotes.vue'
 
 const { t } = useI18n()
 
 const deviceStore = useDeviceStore()
 const firmwareStore = useFirmwareStore()
+const candidateManifest = ref<CandidateManifest | undefined>(undefined)
+const candidateTargetSha = ref<string | undefined>(undefined)
+const defaultTesterNotes = [
+  'Add/receive 250 nodes.',
+  'Scroll rapidly through the node list.',
+  'Update an off-screen node.',
+  'Filter, reorder, and resync.',
+  'Look for stale rows, crashes, or memory problems.',
+  'Report device target and result.',
+]
 
 // Track success state for Chirpy celebration
 const showSuccessAnimation = ref(false)
@@ -349,6 +439,26 @@ const targetBoard = computed(() => {
     pioSuffix = '-inkhud'
   }
   return `${selectedTarget.platformioTarget}${pioSuffix}`
+})
+
+const loadCandidateDetails = async () => {
+  if (!muiTesterOnly || !targetBoard.value) return
+  candidateManifest.value = await loadMuiCandidateManifest()
+  const target = await getMuiCandidateTarget(targetBoard.value)
+  candidateTargetSha.value = target?.files[`firmware-${targetBoard.value}-${firmwareStore.firmwareVersion}.bin`]?.sha256
+}
+
+onMounted(loadCandidateDetails)
+watch(targetBoard, loadCandidateDetails)
+
+const shortFirmwareSource = computed(() => {
+  const source = candidateManifest.value?.source
+  if (!source) return 'Loading manifest…'
+  return `${source.firmware.repo}@${source.firmware.commit.slice(0, 12)} / ${source.deviceUi.repo}@${source.deviceUi.commit.slice(0, 12)} / ${source.compileDefinition}`
+})
+
+const primaryArtifactSha = computed(() => {
+  return candidateTargetSha.value
 })
 
 const cleanInstallEsp32 = async () => {

@@ -102,6 +102,7 @@
 
 <script lang="ts" setup>
 import { checkIfRemoteFileExists } from '~/utils/fileUtils'
+import { muiTesterOnly } from '~/utils/muiTester'
 
 import { Trash } from 'lucide-vue-next'
 
@@ -121,6 +122,10 @@ watch(() => firmwareStore.$state.selectedFirmware, async () => {
 })
 
 watch(() => deviceStore.$state.selectedTarget, async () => {
+  await preflightCheck()
+})
+
+watch(() => firmwareStore.$state.shouldInstallMui, async () => {
   await preflightCheck()
 })
 
@@ -150,12 +155,21 @@ const preflightCheck = async () => {
     fileExistsOnServer.value = await checkIfRemoteFileExists(firmwareStore.getReleaseFileUrl(firmwareFile))
   }
   else if (deviceStore.selectedArchitecture.startsWith('esp32')) {
-    const basePrefix = `firmware-${deviceStore.$state.selectedTarget.platformioTarget}-${firmwareStore.firmwareVersion}`
+    let pioSuffix = ''
+    if (firmwareStore.$state.shouldInstallMui && !deviceStore.$state.selectedTarget.platformioTarget.endsWith('-tft')) {
+      pioSuffix = '-tft'
+    }
+    const targetBoard = `${deviceStore.$state.selectedTarget.platformioTarget}${pioSuffix}`
+    const basePrefix = `firmware-${targetBoard}-${firmwareStore.firmwareVersion}`
     let manifestExists = false
     const manifestName = `${basePrefix}.mt.json`
     const manifestUrl = firmwareStore.getReleaseFileUrl(manifestName)
     manifestExists = manifestUrl ? await checkIfRemoteFileExists(manifestUrl) : false
     firmwareStore.$state.hasManifest = manifestExists
+    if (muiTesterOnly && targetBoard !== 't-deck-tft') {
+      fileExistsOnServer.value = false
+      return
+    }
 
     if (manifestExists) {
       const binUrl = firmwareStore.getReleaseFileUrl(`${basePrefix}.bin`)
