@@ -1,10 +1,14 @@
 [![Vercel](https://img.shields.io/static/v1?label=Powered%20by&message=Vercel&style=flat&logo=vercel&color=000000)](https://vercel.com?utm_source=meshtastic&utm_campaign=oss)
 [![CLA assistant](https://cla-assistant.io/readme/badge/meshtastic/web-flasher)](https://cla-assistant.io/meshtastic/web-flasher)
 
-# Meshtastic Web Flasher
+# Meshtastic MUI Tester Flasher
+
+This fork publishes a dedicated tester-facing flasher for Meshtastic MUI-capable devices. It is based on the official [Meshtastic Web Flasher](https://github.com/meshtastic/web-flasher), keeps the upstream GPL-3.0 license, and uses Meshtastic firmware metadata/artifacts from the official Meshtastic API, `meshtastic.github.io`, nightly, and PR-build endpoints.
+
+It intentionally lists only targets marked as MUI-capable (`hasMui`) and hides the stable-release picker and local firmware upload path. Selectable builds are intended for MUI testing, not as a claim of stable release quality.
 
 ## Introduction
-Welcome to the Meshtastic Web Flasher - a user-friendly, robust tool designed for flashing Meshtastic devices. Leveraging the power of Nuxt/Vue and Tailwind CSS, this web application offers an easy-to-use interface for device flashing.
+Welcome to the Meshtastic MUI Tester Flasher - a focused tool for flashing Meshtastic MUI-capable test targets. Leveraging the power of Nuxt/Vue and Tailwind CSS, this web application offers an easy-to-use interface for device flashing.
 
 ## Key Features
 - **Espressif's esptool.js Integration**: Incorporates the official JavaScript port of Espressif's esptool for enhanced robustness and compatibility with newer Espressif silicon.

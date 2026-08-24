@@ -6,6 +6,7 @@ import {
 } from '~/types/resources'
 import { applyEventDeviceOverrides } from '~/utils/eventDevices'
 import { addRumAction, boardAttributes, eventAttributes, setTelemetryContext } from '~/utils/telemetry'
+import { isMuiTesterTarget, muiTesterOnly, publicPath } from '~/utils/muiTester'
 
 import { MeshDevice } from '@meshtastic/core'
 import { TransportWebSerial } from '@meshtastic/transport-web-serial'
@@ -31,6 +32,9 @@ declare global {
 const firmwareApi = mande(createUrl('api/resource/deviceHardware'))
 
 export const shouldAutoSelectMui = (target: DeviceHardware) => {
+  if (muiTesterOnly && target.hasMui === true && target.platformioTarget !== 'heltec-v4') {
+    return true
+  }
   return target.hasMui === true && target.platformioTarget !== 'heltec-v4'
 }
 
@@ -128,9 +132,9 @@ export const useDeviceStore = defineStore('device', {
      */
     eraseUf2File(): string {
       if (!this.isSelectedNrf) {
-        return '/uf2/pico_erase.uf2'
+        return publicPath('/uf2/pico_erase.uf2')
       }
-      return this.isSoftDevice7point3 ? '/uf2/nrf_erase_sd7_3.uf2' : '/uf2/nrf_erase2.uf2'
+      return this.isSoftDevice7point3 ? publicPath('/uf2/nrf_erase_sd7_3.uf2') : publicPath('/uf2/nrf_erase2.uf2')
     },
     enterDfuVersion(): string {
       if (this.isSelectedNrf) {
@@ -158,7 +162,7 @@ export const useDeviceStore = defineStore('device', {
         console.error(ex)
         // Fallback to offline list from the JSON file
         try {
-          const response = await fetch('/data/hardware-list.json')
+          const response = await fetch(publicPath('/data/hardware-list.json'))
           if (response.ok) {
             const offlineHardwareList = await response.json()
             this.setTargetsList(offlineHardwareList)
@@ -177,6 +181,7 @@ export const useDeviceStore = defineStore('device', {
         this.apiTargets = targets.filter(
           (t: DeviceHardware) => t.activelySupported
             && !t.architecture.toLowerCase().startsWith('portduino')
+            && isMuiTesterTarget(t)
             && t.tags?.includes(vendorCobrandingTag),
         )
       }
@@ -184,23 +189,36 @@ export const useDeviceStore = defineStore('device', {
         this.apiTargets = targets.filter(
           (t: DeviceHardware) => t.activelySupported
             && !t.architecture.toLowerCase().startsWith('portduino'),
-        )
+        ).filter(isMuiTesterTarget)
+      }
+      if (muiTesterOnly && this.tag && !this.apiTargets.some(t => t.tags?.includes(this.tag ?? '') || t.architecture === this.tag)) {
+        this.tag = undefined
+      }
+    },
+    enforceMuiVariant(target: DeviceHardware) {
+      if (shouldAutoSelectMui(target)) {
+        useFirmwareStore().$state.shouldInstallMui = true
       }
     },
     async setSelectedTarget(target: DeviceHardware) {
+      if (!isMuiTesterTarget(target)) {
+        return
+      }
       this.selectedTarget = target
       document.getElementById('device-modal')?.click()
       const firmwareStore = useFirmwareStore()
 
+      this.enforceMuiVariant(target)
+
       await new Promise(_ => setTimeout(_, 250))
-      if (!firmwareStore.hasFirmwareFile && !firmwareStore.hasOnlineFirmware && !firmwareStore.prDeepLinkPending && firmwareStore.stable.length > 0) {
+      if (!firmwareStore.hasFirmwareFile && !firmwareStore.hasOnlineFirmware && !firmwareStore.prDeepLinkPending && firmwareStore.alpha.length > 0) {
+        firmwareStore.setSelectedFirmware(firmwareStore.alpha[0])
+      }
+      else if (!firmwareStore.hasFirmwareFile && !firmwareStore.hasOnlineFirmware && !firmwareStore.prDeepLinkPending && firmwareStore.stable.length > 0) {
         firmwareStore.setSelectedFirmware(firmwareStore.stable[0])
       }
 
-      // Auto-select MUI for supported variants except Heltec V4.
-      if (shouldAutoSelectMui(target)) {
-        firmwareStore.$state.shouldInstallMui = true
-      }
+      this.enforceMuiVariant(target)
 
       // First joint of the provisioning funnel (issue #403). The context sticks
       // to every later event in the session; the action makes "which board did

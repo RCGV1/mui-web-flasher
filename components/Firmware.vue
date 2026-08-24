@@ -139,13 +139,13 @@
             </li>
           </ul>
           <div
-            v-if="!store.couldntFetchFirmwareApi"
+            v-if="!store.couldntFetchFirmwareApi && !muiTesterOnly"
             class="px-4 py-2 text-sm text-green-400 font-semibold border-theme-bottom border-theme-top"
           >
             {{ $t('firmware.stable') }}
           </div>
           <ul
-            v-if="!store.couldntFetchFirmwareApi"
+            v-if="!store.couldntFetchFirmwareApi && !muiTesterOnly"
             class="py-2 text-sm text-theme-muted"
             aria-labelledby="dropdownInformationButton"
           >
@@ -172,6 +172,7 @@
       </div>
     </Teleport>
     <button
+      v-if="!muiTesterOnly"
       data-tooltip-target="tooltip-file"
       class="btn-icon mx-2"
       type="button"
@@ -213,6 +214,7 @@ import { useDeviceStore } from '../stores/deviceStore'
 import { useFirmwareStore } from '../stores/firmwareStore'
 import type { FirmwareResource } from '~/types/api'
 import { useEventMode } from '~/composables/useEventMode'
+import { muiTesterOnly } from '~/utils/muiTester'
 
 const { t } = useI18n()
 

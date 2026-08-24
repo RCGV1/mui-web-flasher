@@ -96,6 +96,7 @@ import { computed, ref } from 'vue'
 
 import { DEVICE_OPTIONS, DEVICE_VENDORS, type DeviceOption } from './devices.generated'
 import { useThemeStore } from '../../stores/themeStore'
+import { publicPath } from '~/utils/muiTester'
 
 const props = defineProps<{
   selected: string[]
@@ -135,10 +136,10 @@ const filtered = computed(() => {
 // Some boards ship no artwork; fall back to the same placeholder the
 // flasher uses, which has a light-mode variant.
 function imageFor(device: DeviceOption): string {
-  if (device.image) return `/img/devices/${device.image}`
+  if (device.image) return publicPath(`/img/devices/${device.image}`)
   return themeStore.isDark
-    ? '/img/devices/unknown-new.svg'
-    : '/img/devices/unknown-new-light.svg'
+    ? publicPath('/img/devices/unknown-new.svg')
+    : publicPath('/img/devices/unknown-new-light.svg')
 }
 
 const selected = computed(() => props.selected)

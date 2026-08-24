@@ -40,6 +40,7 @@ import { useSessionStorage } from '@vueuse/core'
 import { extractZipEntry } from '~/utils/zipUtils'
 import { buildPrReleaseNotes } from '~/utils/prBuild'
 import { t } from '~/utils/i18n'
+import { muiTesterOnly } from '~/utils/muiTester'
 
 import type {
   DeviceHardware,
@@ -256,8 +257,8 @@ export const useFirmwareStore = defineStore('firmware', {
             }
           }
 
-          // Only grab the latest 4 releases
-          this.stable = response.releases.stable.slice(0, 4)
+          // This fork is for MUI tester firmware, not stable-release flashing.
+          this.stable = muiTesterOnly ? [] : response.releases.stable.slice(0, 4)
           this.alpha = response.releases.alpha.filter(f => !f.title.includes('Preview')).slice(0, 4)
           this.previews = [
             ...response.releases.alpha

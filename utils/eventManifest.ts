@@ -1,5 +1,6 @@
 import type { EventFirmwareEdition, EventFirmwareResponse, EventFirmwareTheme } from '~/types/eventFirmware'
 import type { EventModeConfig } from '~/types/resources'
+import { publicPath } from '~/utils/muiTester'
 
 // Same-origin bundled snapshot gates first paint, so it gets a short timeout;
 // the cross-origin live API only refreshes in the background and can wait longer.
@@ -8,7 +9,7 @@ const API_TIMEOUT_MS = 2500
 // Offline snapshot shipped with the app (public/data/event_firmware.json, same
 // origin and PWA-precached) so event mode still resolves when the cross-origin
 // API is unreachable — venue Wi-Fi is unreliable. Kept in sync with meshtastic/api.
-const BUNDLED_MANIFEST_URL = '/data/event_firmware.json'
+const BUNDLED_MANIFEST_URL = publicPath('/data/event_firmware.json')
 const EMPTY_MANIFEST: EventFirmwareResponse = { version: 0, editions: [] }
 
 async function fetchManifest(url: string, timeoutMs: number): Promise<EventFirmwareResponse | null> {

@@ -27,6 +27,27 @@
         > — {{ $t('firmware.pr.device_not_built', { device: deviceStore.selectedTarget?.displayName }) }}</span>
       </p>
     </div>
+    <div
+      v-if="muiTesterOnly"
+      class="bg-surface-secondary text-theme text-center text-sm px-3 py-2.5 border-theme-bottom"
+    >
+      <p>
+        {{ $t('mui_tester.banner') }}
+        <a
+          href="https://github.com/meshtastic/firmware"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-theme font-semibold"
+        >{{ $t('mui_tester.firmware_source') }}</a>
+        <span class="mx-1">/</span>
+        <a
+          href="https://github.com/meshtastic/web-flasher"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-theme font-semibold"
+        >{{ $t('mui_tester.flasher_source') }}</a>
+      </p>
+    </div>
     <Head>
       <Title>{{ $t('title') }}</Title>
       <Meta
@@ -285,6 +306,7 @@ import { useToastStore } from './stores/toastStore'
 import { useEventMode } from '~/composables/useEventMode'
 import SurveyBanner from '~/components/survey/SurveyBanner.vue'
 import SurveyView from '~/components/survey/SurveyView.vue'
+import { muiTesterOnly, publicPath } from '~/utils/muiTester'
 
 const { t } = useI18n()
 const config = useRuntimeConfig()
@@ -406,9 +428,9 @@ const monitorSerial = async () => {
 
 const selectedDeviceImage = computed(() => {
   if (deviceStore.selectedTarget?.images?.length) {
-    return `/img/devices/${deviceStore.selectedTarget.images[0]}`
+    return publicPath(`/img/devices/${deviceStore.selectedTarget.images[0]}`)
   }
-  return themeStore.isDark ? '/img/devices/unknown-new.svg' : '/img/devices/unknown-new-light.svg'
+  return themeStore.isDark ? publicPath('/img/devices/unknown-new.svg') : publicPath('/img/devices/unknown-new-light.svg')
 })
 
 const connectionButtonLabel = computed(() => {

@@ -28,7 +28,7 @@
       </span>
       <img
         v-if="props.device.hasMui"
-        src="/img/Meshtastic-UI-Short.svg"
+        :src="publicPath('/img/Meshtastic-UI-Short.svg')"
         class="h-6 m-1 pb-1"
         alt="Meshtastic UI"
       >
@@ -49,14 +49,14 @@
         :key="image"
         class="absolute inset-0 w-24 h-24 sm:w-32 sm:h-32"
         :style="{ left: `${index * 15}px` }"
-        :src="`/img/devices/${image}`"
+        :src="publicPath(`/img/devices/${image}`)"
         :alt="props.device.displayName"
       >
     </div>
     <img
       v-else
       class="w-24 h-24 sm:w-32 sm:h-32 m-2"
-      :src="`/img/devices/unknown.svg`"
+      :src="publicPath('/img/devices/unknown.svg')"
       :alt="props.device.displayName"
     >
     <div class="flex justify-start w-full">
@@ -83,6 +83,7 @@ import type { DeviceHardware } from '~/types/api'
 import { supportedVendorDeviceTags } from '~/types/resources'
 import { requiresHamLicense } from '~/utils/deviceBadges'
 import { useFirmwareStore } from '../stores/firmwareStore'
+import { publicPath } from '~/utils/muiTester'
 import { computed } from 'vue'
 
 import {

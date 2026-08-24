@@ -52,7 +52,7 @@
                 class="tag-pill tag-pill-active shrink-0"
                 @click="store.setSelectedTag('all')"
               >
-                {{ $t('device.all_devices') }}
+                {{ $t('device.mui_devices') }}
               </button>
               <button
                 v-if="vendorCobrandingTag.length === 0"
@@ -144,7 +144,7 @@
           >
             <span class="font-medium">
               <Info class="h-4 w-4 inline text-meshtastic" />
-              {{ $t('device.subheading') }} <button
+              {{ $t('device.mui_subheading') }} <button
                 type="button"
                 class="btn-primary inline-flex py-1.5 sm:py-2 mx-1 sm:mx-2 px-3 sm:px-4 text-xs sm:text-sm"
                 @click="() => store.autoSelectHardware($t)"
@@ -157,7 +157,7 @@
           >
             <div class="w-full text-center mb-2">
               <h2 class="text-xl sm:text-xl font-semibold text-theme">
-                {{ $t('device.supported_devices') }}
+                {{ $t('device.supported_mui_devices') }}
               </h2>
             </div>
             <div

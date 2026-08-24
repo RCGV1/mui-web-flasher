@@ -1,9 +1,14 @@
 {
-  "title": "Meshtastic Web Flasher",
+  "title": "Meshtastic MUI Tester Flasher",
   "header": "Flasher",
-  "description": "Update your Meshtastic device with official firmware, straight from your browser",
+  "description": "Flash Meshtastic MUI-capable tester builds from your browser",
   "browser_warning": "Your browser does not support the WebSerial API. Please switch to a compatible browser, such as Chrome or Edge, for full functionality.",
-  "header_title": "Meshtastic Web Flasher",
+  "header_title": "Meshtastic MUI Tester Flasher",
+  "mui_tester": {
+    "banner": "MUI tester flasher: only MUI-capable targets are listed, and selectable firmware is intended for testing rather than stable-release use. Sources:",
+    "firmware_source": "firmware",
+    "flasher_source": "flasher"
+  },
   "language": "Language",
   "actions": {
     "connect": "Connect",
@@ -28,10 +33,13 @@
     "header": "Select your connected device",
     "select_device": "Select Target Device",
     "all_devices": "All Devices",
+    "mui_devices": "MUI Devices",
     "instructions": "Plug in your device via USB. Please ensure the cable is not a power-only one.",
     "subheading": "If your connected device already has Meshtastic installed, you can automatically detect it:",
+    "mui_subheading": "Only MUI-capable targets are shown. If your connected device already has Meshtastic installed, you can automatically detect it:",
     "auto_detect": "Auto-detect",
     "supported_devices": "Supported Devices",
+    "supported_mui_devices": "Supported MUI Devices",
     "diy_devices": "Community Supported Devices",
     "ham_license_required": "Amateur radio band — an amateur radio license is required to transmit"
   },
@@ -87,6 +95,7 @@
       "full_erase": "Full Erase and Install",
       "bundle_webui": "Bundle Web UI",
       "install_inkhud": "Install InkHUD",
+      "mui_locked": "MUI variant selected for this tester flasher",
       "backup_warning": "Back up the device's public and private keys before a full erase and install to restore them after re-flashing if needed.",
       "webui_space_warning": "Additionally, bundling the Web UI will increase the flash utilization, taking away space from core usage and will take longer to install.",
       "doc_guide": "Check out this guide in our documentation.",
