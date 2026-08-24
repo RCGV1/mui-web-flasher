@@ -69,11 +69,16 @@
           <h3 class="flex items-center mb-3 text-lg font-semibold text-theme">
             {{ $t('flash.esp32.step_1_usb') }}
           </h3>
-          <div class="flex p-4 text-sm rounded-lg alert-box" role="alert">
+          <div
+            class="flex p-4 text-sm rounded-lg alert-box"
+            role="alert"
+          >
             <Info class="flex-shrink-0 inline w-5 h-5 me-3 mt-0.5" />
             <div>
               <p>{{ $t('flash.esp32.s3_instructions') }}</p>
-              <p class="mt-2">{{ $t('flash.esp32.reset_alternative') }}</p>
+              <p class="mt-2">
+                {{ $t('flash.esp32.reset_alternative') }}
+              </p>
               <button
                 type="button"
                 class="inline-flex items-center gap-2 mt-3 px-4 py-2 text-sm font-medium text-gray-900 bg-meshtastic rounded-lg hover:bg-green-300 focus:ring-4 focus:ring-green-800 transition-colors"
@@ -99,12 +104,22 @@
             v-model="firmwareStore.$state.baudRate"
             class="border text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 text-theme bg-surface-primary border-theme"
           >
-            <option value="115200">115200</option>
-            <option value="230400">230400</option>
-            <option value="460800">460800</option>
-            <option value="921600">921600</option>
+            <option value="115200">
+              115200
+            </option>
+            <option value="230400">
+              230400
+            </option>
+            <option value="460800">
+              460800
+            </option>
+            <option value="921600">
+              921600
+            </option>
           </select>
-          <p class="mt-2 text-sm text-theme-muted">{{ $t('flash.esp32.slow_reliable') }}</p>
+          <p class="mt-2 text-sm text-theme-muted">
+            {{ $t('flash.esp32.slow_reliable') }}
+          </p>
         </div>
       </li>
       <!-- Step 3: Flash Options -->
@@ -116,7 +131,7 @@
           <h3 class="flex items-center mb-3 text-lg font-semibold text-theme">
             {{ $t('flash.esp32.step_3_flash') }}
           </h3>
-          
+
           <!-- Toggle Options -->
           <div class="flex flex-wrap gap-4 mb-4">
             <label
@@ -131,7 +146,7 @@
               <div class="w-11 h-6 bg-gray-400 dark:bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-red-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-600" />
               <span class="ms-3 text-sm font-medium text-theme-muted">{{ $t('flash.esp32.full_erase') }}</span>
             </label>
-            
+
             <label
               v-if="canInstallMui && !muiTesterOnly"
               class="relative inline-flex items-center cursor-pointer"
@@ -159,7 +174,7 @@
               >
               <span>{{ $t('flash.esp32.mui_locked') }}</span>
             </div>
-            
+
             <label
               v-if="canInstallInkHud"
               class="relative inline-flex items-center cursor-pointer"
@@ -173,7 +188,7 @@
               <span class="ms-3 text-sm font-medium text-theme-muted">{{ $t('flash.esp32.install_inkhud') }}</span>
             </label>
           </div>
-          
+
           <!-- Warning Alert -->
           <div
             v-if="firmwareStore.$state.shouldCleanInstall"
@@ -196,11 +211,16 @@
               {{ $t('flash.esp32.doc_guide') }}
             </a>
           </div>
-          
-          <p class="text-sm text-theme-muted mb-3">{{ $t('flash.esp32.process_warning') }}</p>
-          
+
+          <p class="text-sm text-theme-muted mb-3">
+            {{ $t('flash.esp32.process_warning') }}
+          </p>
+
           <!-- Info Alert -->
-          <div class="flex p-4 text-sm rounded-lg alert-box" role="alert">
+          <div
+            class="flex p-4 text-sm rounded-lg alert-box"
+            role="alert"
+          >
             <Info class="flex-shrink-0 inline w-5 h-5 me-3" />
             <span>{{ $t('flash.esp32.reset_after_flash') }}</span>
           </div>
@@ -208,7 +228,10 @@
       </li>
     </ol>
     <!-- Flash Actions -->
-    <div v-if="firmwareStore.canShowFlash" class="space-y-4">
+    <div
+      v-if="firmwareStore.canShowFlash"
+      class="space-y-4"
+    >
       <!-- PR build artifact download progress -->
       <div v-if="firmwareStore.$state.prDownload">
         <div class="flex justify-between mb-1">
@@ -238,7 +261,7 @@
       >
         {{ $t('flash.esp32.start_over') }}
       </button>
-      
+
       <!-- Progress Bar -->
       <div v-if="firmwareStore.$state.flashPercentDone > 0">
         <div class="flex justify-between mb-1">
@@ -274,7 +297,10 @@
       </div>
     </div>
     <!-- Terminal -->
-    <div id="terminal" class="rounded-lg overflow-hidden relative z-10 bg-black/40" />
+    <div
+      id="terminal"
+      class="rounded-lg overflow-hidden relative z-10 bg-black/40"
+    />
   </div>
 </template>
 
@@ -561,10 +587,10 @@ const updateEsp32 = async () => {
 }
 
 @keyframes container-glow {
-  0%, 100% { 
+  0%, 100% {
     box-shadow: 0 0 20px rgba(103, 234, 148, 0.15);
   }
-  50% { 
+  50% {
     box-shadow: 0 0 35px rgba(103, 234, 148, 0.25);
   }
 }

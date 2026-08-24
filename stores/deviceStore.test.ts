@@ -147,6 +147,19 @@ describe('deviceStore MUI tester candidate manifest', () => {
         hasMui: true,
       }),
       makeTarget({
+        hwModel: 110,
+        hwModelSlug: 'HELTEC_V4',
+        platformioTarget: 'heltec-v4',
+        architecture: 'esp32-s3',
+        displayName: 'Heltec V4 TFT — MUI virtual node-list tester',
+        supportLevel: 1,
+        tags: ['Heltec', 'MUI tester'],
+        images: ['heltec_v4.svg'],
+        partitionScheme: '16MB',
+        requiresDfu: true,
+        hasMui: true,
+      }),
+      makeTarget({
         hwModel: 116,
         hwModelSlug: 'WISMESH_TAP_V2',
         platformioTarget: 'rak_wismesh_tap_v2',
@@ -192,15 +205,15 @@ describe('deviceStore MUI tester candidate manifest', () => {
     ]
     const fetchMock = vi.mocked(fetch)
     fetchMock.mockResolvedValueOnce(jsonResponse({
-      id: 'v2.8.0.631688e',
-      version: '2.8.0.631688e',
+      id: 'v2.8.0.0d652f6',
+      version: '2.8.0.0d652f6',
       title: 'MUI virtual node-list tester firmware (all MUI targets)',
       releaseNotes: 'Tester notes',
-      releaseTag: 'mui-node-list-20260824-631688e',
-      buildTimestamp: '2026-08-24T23:04:23Z',
+      releaseTag: 'mui-node-list-20260824-0d652f6',
+      buildTimestamp: '2026-08-24T23:37:58Z',
       testerNotes: ['Add/receive 250 nodes.'],
       source: {
-        firmware: { repo: 'RCGV1/firmware-Fork', branch: 'candidate/mui-node-list-tester-20260824', commit: '631688ede1322c5008af73f7b08bc41906c4d20d' },
+        firmware: { repo: 'RCGV1/firmware-Fork', branch: 'candidate/mui-node-list-tester-20260824', commit: '0d652f66d5a58e23f7fd1505e23c03a4a6ada302' },
         deviceUi: { repo: 'RCGV1/device-ui', branch: 'candidate/virtual-node-list-improvement-20260824', commit: '9e84d74cb9bc4f2ef4cc577912b3d11b2ad29504' },
         compileDefinition: 'DEVICE_UI_MUI_VIRTUAL_NODE_LIST',
         compileValue: '1',
@@ -209,7 +222,7 @@ describe('deviceStore MUI tester candidate manifest', () => {
         board: device.platformioTarget.endsWith('-tft') ? device.platformioTarget : `${device.platformioTarget}-tft`,
         platform: 'esp32s3',
         device,
-        manifestUrl: `https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-${device.platformioTarget.endsWith('-tft') ? device.platformioTarget : `${device.platformioTarget}-tft`}-2.8.0.631688e.mt.json`,
+        manifestUrl: `https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-0d652f6/firmware-${device.platformioTarget.endsWith('-tft') ? device.platformioTarget : `${device.platformioTarget}-tft`}-2.8.0.0d652f6.mt.json`,
         manifestSha256: 'a'.repeat(64),
         files: {},
       })),
@@ -219,13 +232,14 @@ describe('deviceStore MUI tester candidate manifest', () => {
     await store.fetchList()
 
     expect(fetchMock).toHaveBeenCalledWith('/mui-web-flasher/data/mui-node-list-candidate.json')
-    expect(store.sortedDevices).toHaveLength(8)
+    expect(store.sortedDevices).toHaveLength(9)
     expect(store.sortedDevices.map(device => device.platformioTarget)).toEqual([
       't-deck',
       'seeed-sensecap-indicator',
       'elecrow-adv-24-28-tft',
       'elecrow-adv-35-tft',
       'elecrow-adv1-43-50-70-tft',
+      'heltec-v4',
       'rak_wismesh_tap_v2',
       'picomputer-s3',
       'unphone',

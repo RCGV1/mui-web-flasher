@@ -510,7 +510,7 @@ export const useFirmwareStore = defineStore('firmware', {
     },
     getReleaseFileUrl(fileName: string): string {
       if (muiTesterOnly && this.selectedFirmware?.id === MUI_CANDIDATE_ID) {
-        const releaseTag = getCachedMuiCandidateManifest()?.releaseTag || 'mui-node-list-20260824-631688e'
+        const releaseTag = getCachedMuiCandidateManifest()?.releaseTag || 'mui-node-list-20260824-0d652f6'
         return `https://rcgv1.github.io/mui-web-flasher/firmware/${releaseTag}/${fileName}`
       }
       // PR build files come from artifact zips, not meshtastic.github.io
