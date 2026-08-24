@@ -37,22 +37,29 @@ export interface CandidateManifest {
       commit: string
     }
     compileDefinition: string
+    compileValue?: string
   }
   targets: CandidateTarget[]
 }
 
-export const MUI_CANDIDATE_ID = 'v2.8.0.599f1c3'
+export const MUI_CANDIDATE_ID = 'v2.8.0.631688e'
 
 let candidatePromise: Promise<CandidateManifest> | undefined
+let candidateCache: CandidateManifest | undefined
 
 export async function loadMuiCandidateManifest(): Promise<CandidateManifest> {
   candidatePromise ??= fetch(publicPath('/data/mui-node-list-candidate.json')).then(async (response) => {
     if (!response.ok) {
       throw new Error(`Could not load MUI candidate manifest (HTTP ${response.status})`)
     }
-    return await response.json() as CandidateManifest
+    candidateCache = await response.json() as CandidateManifest
+    return candidateCache
   })
   return candidatePromise
+}
+
+export function getCachedMuiCandidateManifest(): CandidateManifest | undefined {
+  return candidateCache
 }
 
 export async function getMuiCandidateFirmwareResource(): Promise<FirmwareResource> {

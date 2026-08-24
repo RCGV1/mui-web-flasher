@@ -104,54 +104,136 @@ describe('deviceStore MUI tester candidate manifest', () => {
     vi.stubGlobal('fetch', vi.fn())
   })
 
-  it('loads and selects the T-Deck from the Pages-relative tester manifest', async () => {
-    const tDeck = makeTarget({
-      hwModel: 50,
-      hwModelSlug: 'T_DECK',
-      platformioTarget: 't-deck',
-      architecture: 'esp32-s3',
-      displayName: 'LILYGO T-Deck — MUI virtual node-list tester',
-      supportLevel: 1,
-      tags: ['LilyGo', 'MUI tester'],
-      images: ['t-deck.svg'],
-      partitionScheme: '16MB',
-      requiresDfu: true,
-      hasMui: true,
-    })
+  it('loads and selects every verified MUI tester target from the Pages-relative tester manifest', async () => {
+    const testerDevices = [
+      makeTarget({
+        hwModel: 97,
+        hwModelSlug: 'CROWPANEL',
+        platformioTarget: 'elecrow-adv-24-28-tft',
+        architecture: 'esp32-s3',
+        displayName: 'Crowpanel Adv 2.4/2.8 TFT — MUI virtual node-list tester',
+        supportLevel: 1,
+        tags: ['Elecrow', 'MUI tester'],
+        hasMui: true,
+      }),
+      makeTarget({
+        hwModel: 97,
+        hwModelSlug: 'CROWPANEL',
+        platformioTarget: 'elecrow-adv-35-tft',
+        architecture: 'esp32-s3',
+        displayName: 'Crowpanel Adv 3.5 TFT — MUI virtual node-list tester',
+        supportLevel: 1,
+        tags: ['Elecrow', 'MUI tester'],
+        hasMui: true,
+      }),
+      makeTarget({
+        hwModel: 97,
+        hwModelSlug: 'CROWPANEL',
+        platformioTarget: 'elecrow-adv1-43-50-70-tft',
+        architecture: 'esp32-s3',
+        displayName: 'Crowpanel Adv 4.3/5.0/7.0 TFT — MUI virtual node-list tester',
+        supportLevel: 1,
+        tags: ['Elecrow', 'MUI tester'],
+        hasMui: true,
+      }),
+      makeTarget({
+        hwModel: 52,
+        hwModelSlug: 'PICOMPUTER_S3',
+        platformioTarget: 'picomputer-s3',
+        architecture: 'esp32-s3',
+        displayName: 'Pi Computer S3 — MUI virtual node-list tester',
+        supportLevel: 3,
+        tags: ['MUI tester'],
+        hasMui: true,
+      }),
+      makeTarget({
+        hwModel: 116,
+        hwModelSlug: 'WISMESH_TAP_V2',
+        platformioTarget: 'rak_wismesh_tap_v2',
+        architecture: 'esp32-s3',
+        displayName: 'RAK WisMesh Tap V2 — MUI virtual node-list tester',
+        supportLevel: 1,
+        tags: ['RAK', 'MUI tester'],
+        hasMui: true,
+      }),
+      makeTarget({
+        hwModel: 70,
+        hwModelSlug: 'SENSECAP_INDICATOR',
+        platformioTarget: 'seeed-sensecap-indicator',
+        architecture: 'esp32-s3',
+        displayName: 'Seeed SenseCAP Indicator — MUI virtual node-list tester',
+        supportLevel: 1,
+        tags: ['Seeed', 'MUI tester'],
+        hasMui: true,
+      }),
+      makeTarget({
+        hwModel: 50,
+        hwModelSlug: 'T_DECK',
+        platformioTarget: 't-deck',
+        architecture: 'esp32-s3',
+        displayName: 'LILYGO T-Deck — MUI virtual node-list tester',
+        supportLevel: 1,
+        tags: ['LilyGo', 'MUI tester'],
+        images: ['t-deck.svg'],
+        partitionScheme: '16MB',
+        requiresDfu: true,
+        hasMui: true,
+      }),
+      makeTarget({
+        hwModel: 59,
+        hwModelSlug: 'UNPHONE',
+        platformioTarget: 'unphone',
+        architecture: 'esp32-s3',
+        displayName: 'unPhone — MUI virtual node-list tester',
+        supportLevel: 3,
+        tags: ['MUI tester'],
+        hasMui: true,
+      }),
+    ]
     const fetchMock = vi.mocked(fetch)
     fetchMock.mockResolvedValueOnce(jsonResponse({
-      id: 'v2.8.0.599f1c3',
-      version: '2.8.0.599f1c3',
-      title: 'MUI virtual node-list tester firmware (T-Deck)',
+      id: 'v2.8.0.631688e',
+      version: '2.8.0.631688e',
+      title: 'MUI virtual node-list tester firmware (all MUI targets)',
       releaseNotes: 'Tester notes',
-      releaseTag: 'mui-node-list-20260824-599f1c3',
-      buildTimestamp: '2026-08-24T19:22:39Z',
+      releaseTag: 'mui-node-list-20260824-631688e',
+      buildTimestamp: '2026-08-24T23:04:23Z',
       testerNotes: ['Add/receive 250 nodes.'],
       source: {
-        firmware: { repo: 'RCGV1/firmware-Fork', branch: 'candidate/mui-node-list-tester-20260824', commit: '599f1c36ec5738cae8d330b095ff9f3f868b1ea3' },
+        firmware: { repo: 'RCGV1/firmware-Fork', branch: 'candidate/mui-node-list-tester-20260824', commit: '631688ede1322c5008af73f7b08bc41906c4d20d' },
         deviceUi: { repo: 'RCGV1/device-ui', branch: 'candidate/virtual-node-list-improvement-20260824', commit: '9e84d74cb9bc4f2ef4cc577912b3d11b2ad29504' },
         compileDefinition: 'DEVICE_UI_MUI_VIRTUAL_NODE_LIST',
+        compileValue: '1',
       },
-      targets: [
-        {
-          board: 't-deck-tft',
-          platform: 'esp32s3',
-          device: tDeck,
-          manifestUrl: 'https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-599f1c3/firmware-t-deck-tft-2.8.0.599f1c3.mt.json',
-          manifestSha256: '6009d733e33786dd96ae3da0ee465aaaa4c7dddbdb492993637ebae2d65a55b0',
-          files: {},
-        },
-      ],
+      targets: testerDevices.map(device => ({
+        board: device.platformioTarget.endsWith('-tft') ? device.platformioTarget : `${device.platformioTarget}-tft`,
+        platform: 'esp32s3',
+        device,
+        manifestUrl: `https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-${device.platformioTarget.endsWith('-tft') ? device.platformioTarget : `${device.platformioTarget}-tft`}-2.8.0.631688e.mt.json`,
+        manifestSha256: 'a'.repeat(64),
+        files: {},
+      })),
     }))
 
     const store = useDeviceStore()
     await store.fetchList()
 
     expect(fetchMock).toHaveBeenCalledWith('/mui-web-flasher/data/mui-node-list-candidate.json')
-    expect(store.sortedDevices).toHaveLength(1)
-    expect(store.sortedDevices[0].platformioTarget).toBe('t-deck')
+    expect(store.sortedDevices).toHaveLength(8)
+    expect(store.sortedDevices.map(device => device.platformioTarget)).toEqual([
+      't-deck',
+      'seeed-sensecap-indicator',
+      'elecrow-adv-24-28-tft',
+      'elecrow-adv-35-tft',
+      'elecrow-adv1-43-50-70-tft',
+      'rak_wismesh_tap_v2',
+      'picomputer-s3',
+      'unphone',
+    ])
 
-    await store.setSelectedTarget(store.sortedDevices[0])
+    const tDeck = store.sortedDevices.find(device => device.platformioTarget === 't-deck')
+    expect(tDeck).toBeTruthy()
+    await store.setSelectedTarget(tDeck!)
 
     expect(store.selectedTarget?.platformioTarget).toBe('t-deck')
     expect(store.selectedTarget?.hasMui).toBe(true)

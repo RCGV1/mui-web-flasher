@@ -52,7 +52,10 @@
                 playsinline
                 class="modal-background-video"
               >
-                <source src="@/assets/img/chirpy_bounce.webm" type="video/webm">
+                <source
+                  src="@/assets/img/chirpy_bounce.webm"
+                  type="video/webm"
+                >
               </video>
               <FlashHeader />
               <div class="flex-1 overflow-y-auto p-3 sm:p-4 relative z-10">
@@ -83,7 +86,10 @@
                 playsinline
                 class="modal-background-video"
               >
-                <source src="@/assets/img/chirpy_bounce.webm" type="video/webm">
+                <source
+                  src="@/assets/img/chirpy_bounce.webm"
+                  type="video/webm"
+                >
               </video>
               <FlashHeader
                 modal-id="erase-modal"
@@ -160,16 +166,16 @@ const preflightCheck = async () => {
       pioSuffix = '-tft'
     }
     const targetBoard = `${deviceStore.$state.selectedTarget.platformioTarget}${pioSuffix}`
+    if (muiTesterOnly && !firmwareStore.isTargetAvailable(targetBoard)) {
+      fileExistsOnServer.value = false
+      return
+    }
     const basePrefix = `firmware-${targetBoard}-${firmwareStore.firmwareVersion}`
     let manifestExists = false
     const manifestName = `${basePrefix}.mt.json`
     const manifestUrl = firmwareStore.getReleaseFileUrl(manifestName)
     manifestExists = manifestUrl ? await checkIfRemoteFileExists(manifestUrl) : false
     firmwareStore.$state.hasManifest = manifestExists
-    if (muiTesterOnly && targetBoard !== 't-deck-tft') {
-      fileExistsOnServer.value = false
-      return
-    }
 
     if (manifestExists) {
       const binUrl = firmwareStore.getReleaseFileUrl(`${basePrefix}.bin`)

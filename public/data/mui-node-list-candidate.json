@@ -1,32 +1,310 @@
 {
-  "id": "v2.8.0.599f1c3",
-  "version": "2.8.0.599f1c3",
-  "title": "MUI virtual node-list tester firmware (T-Deck)",
-  "releaseNotes": "## Virtual MUI node-list tester firmware\n\nTester-only Meshtastic firmware for validating the MUI virtual node-list implementation. This is not a Meshtastic stable release.\n\nBefore and after flashing, please test: add/receive 250 nodes; scroll rapidly; update an off-screen node; filter, reorder, and resync; look for stale rows, crashes, or memory problems; then report device target and result.\n\nSource is pinned to RCGV1/firmware-Fork@599f1c36ec5738cae8d330b095ff9f3f868b1ea3 with RCGV1/device-ui@9e84d74cb9bc4f2ef4cc577912b3d11b2ad29504 and DEVICE_UI_MUI_VIRTUAL_NODE_LIST enabled.",
-  "releaseTag": "mui-node-list-20260824-599f1c3",
-  "buildTimestamp": "2026-08-24T19:22:39Z",
+  "id": "v2.8.0.631688e",
+  "version": "2.8.0.631688e",
+  "title": "MUI virtual node-list tester firmware (all MUI targets)",
+  "releaseNotes": "## Virtual MUI node-list tester firmware\n\nTester-only Meshtastic firmware for validating the MUI virtual node-list implementation across all currently verified MUI targets. This is not a Meshtastic stable release.\n\nBefore and after flashing, please test: add/receive 250 nodes; scroll rapidly; update an off-screen node; filter, reorder, and resync; look for stale rows, crashes, resets, or memory problems; then report device target and result.\n\nSource is pinned to RCGV1/firmware-Fork@631688ede1322c5008af73f7b08bc41906c4d20d with RCGV1/device-ui@9e84d74cb9bc4f2ef4cc577912b3d11b2ad29504 and DEVICE_UI_MUI_VIRTUAL_NODE_LIST=1 enabled. Artifact hashes and build timestamp are included in this manifest.",
+  "releaseTag": "mui-node-list-20260824-631688e",
+  "buildTimestamp": "2026-08-24T23:04:23Z",
   "testerNotes": [
-    "Add/receive 250 nodes.",
-    "Scroll rapidly through the node list.",
-    "Update an off-screen node.",
-    "Filter, reorder, and resync.",
-    "Look for stale rows, crashes, or memory problems.",
-    "Report device target and result."
+    "Add or receive 250 nodes on the mesh.",
+    "Scroll rapidly through the MUI node list.",
+    "Update an off-screen node and verify the visible rows stay correct.",
+    "Filter, reorder, and resync the node list.",
+    "Watch for stale rows, crashes, resets, or memory problems.",
+    "Report device target, pass/fail result, and any reproduction notes."
   ],
   "source": {
     "firmware": {
       "repo": "RCGV1/firmware-Fork",
       "branch": "candidate/mui-node-list-tester-20260824",
-      "commit": "599f1c36ec5738cae8d330b095ff9f3f868b1ea3"
+      "commit": "631688ede1322c5008af73f7b08bc41906c4d20d"
     },
     "deviceUi": {
       "repo": "RCGV1/device-ui",
       "branch": "candidate/virtual-node-list-improvement-20260824",
       "commit": "9e84d74cb9bc4f2ef4cc577912b3d11b2ad29504"
     },
-    "compileDefinition": "DEVICE_UI_MUI_VIRTUAL_NODE_LIST"
+    "compileDefinition": "DEVICE_UI_MUI_VIRTUAL_NODE_LIST",
+    "compileValue": "1"
   },
   "targets": [
+    {
+      "board": "elecrow-adv-24-28-tft",
+      "platform": "esp32s3",
+      "device": {
+        "hwModel": 97,
+        "hwModelSlug": "CROWPANEL",
+        "platformioTarget": "elecrow-adv-24-28-tft",
+        "architecture": "esp32-s3",
+        "activelySupported": true,
+        "supportLevel": 1,
+        "displayName": "Crowpanel Adv 2.4/2.8 TFT — MUI virtual node-list tester",
+        "tags": [
+          "Elecrow",
+          "MUI tester"
+        ],
+        "requiresDfu": true,
+        "images": [
+          "crowpanel_2_4.svg",
+          "crowpanel_2_8.svg"
+        ],
+        "partitionScheme": "16MB",
+        "hasMui": true
+      },
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-elecrow-adv-24-28-tft-2.8.0.631688e.mt.json",
+      "manifestSha256": "ae8f70382821cf806c96317968a79ef79cde14f7f5e90592cb288036784c959e",
+      "files": {
+        "firmware-elecrow-adv-24-28-tft-2.8.0.631688e.mt.json": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-elecrow-adv-24-28-tft-2.8.0.631688e.mt.json",
+          "sha256": "ae8f70382821cf806c96317968a79ef79cde14f7f5e90592cb288036784c959e",
+          "bytes": 2155
+        },
+        "firmware-elecrow-adv-24-28-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-elecrow-adv-24-28-tft-2.8.0.631688e.bin",
+          "sha256": "9042747dc186bed5fe9cff2b56920997daee24386f016e69c213493d182acc04",
+          "bytes": 3472096
+        },
+        "firmware-elecrow-adv-24-28-tft-2.8.0.631688e.factory.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-elecrow-adv-24-28-tft-2.8.0.631688e.factory.bin",
+          "sha256": "1f392bb58b4138df1806391a3f93787808c4e1914fa69437b1e3b9362db8333c",
+          "bytes": 3537632
+        },
+        "littlefs-elecrow-adv-24-28-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/littlefs-elecrow-adv-24-28-tft-2.8.0.631688e.bin",
+          "sha256": "231b4f3efd15efcb753799e0f7a438070c283ce3b90cf205748826b7f91266ac",
+          "bytes": 3538944
+        }
+      }
+    },
+    {
+      "board": "elecrow-adv-35-tft",
+      "platform": "esp32s3",
+      "device": {
+        "hwModel": 97,
+        "hwModelSlug": "CROWPANEL",
+        "platformioTarget": "elecrow-adv-35-tft",
+        "architecture": "esp32-s3",
+        "activelySupported": true,
+        "supportLevel": 1,
+        "displayName": "Crowpanel Adv 3.5 TFT — MUI virtual node-list tester",
+        "tags": [
+          "Elecrow",
+          "MUI tester"
+        ],
+        "requiresDfu": true,
+        "images": [
+          "crowpanel_3_5.svg"
+        ],
+        "partitionScheme": "16MB",
+        "hasMui": true
+      },
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-elecrow-adv-35-tft-2.8.0.631688e.mt.json",
+      "manifestSha256": "6972f0762af62ef2e420170c458c56cc5c6c6e6eb060c0d8d99f51f5d993c8d7",
+      "files": {
+        "firmware-elecrow-adv-35-tft-2.8.0.631688e.mt.json": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-elecrow-adv-35-tft-2.8.0.631688e.mt.json",
+          "sha256": "6972f0762af62ef2e420170c458c56cc5c6c6e6eb060c0d8d99f51f5d993c8d7",
+          "bytes": 2111
+        },
+        "firmware-elecrow-adv-35-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-elecrow-adv-35-tft-2.8.0.631688e.bin",
+          "sha256": "ca3db4802fbd38939798b89947abe980f6c94e84e6ffcaa877dc659be0b40d2b",
+          "bytes": 3471504
+        },
+        "firmware-elecrow-adv-35-tft-2.8.0.631688e.factory.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-elecrow-adv-35-tft-2.8.0.631688e.factory.bin",
+          "sha256": "8095682dfeaedd154060f450c99b2293e87bb7547546cb94bc4b4acf14c8987b",
+          "bytes": 3537040
+        },
+        "littlefs-elecrow-adv-35-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/littlefs-elecrow-adv-35-tft-2.8.0.631688e.bin",
+          "sha256": "231b4f3efd15efcb753799e0f7a438070c283ce3b90cf205748826b7f91266ac",
+          "bytes": 3538944
+        }
+      }
+    },
+    {
+      "board": "elecrow-adv1-43-50-70-tft",
+      "platform": "esp32s3",
+      "device": {
+        "hwModel": 97,
+        "hwModelSlug": "CROWPANEL",
+        "platformioTarget": "elecrow-adv1-43-50-70-tft",
+        "architecture": "esp32-s3",
+        "activelySupported": true,
+        "supportLevel": 1,
+        "displayName": "Crowpanel Adv 4.3/5.0/7.0 TFT — MUI virtual node-list tester",
+        "tags": [
+          "Elecrow",
+          "MUI tester"
+        ],
+        "requiresDfu": true,
+        "images": [
+          "crowpanel_5_0.svg",
+          "crowpanel_7_0.svg"
+        ],
+        "partitionScheme": "16MB",
+        "hasMui": true
+      },
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-elecrow-adv1-43-50-70-tft-2.8.0.631688e.mt.json",
+      "manifestSha256": "fa023b4ba3115966cd86eedaf9101590098a14565a2e59e7dade7c7c45badf17",
+      "files": {
+        "firmware-elecrow-adv1-43-50-70-tft-2.8.0.631688e.mt.json": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-elecrow-adv1-43-50-70-tft-2.8.0.631688e.mt.json",
+          "sha256": "fa023b4ba3115966cd86eedaf9101590098a14565a2e59e7dade7c7c45badf17",
+          "bytes": 2179
+        },
+        "firmware-elecrow-adv1-43-50-70-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-elecrow-adv1-43-50-70-tft-2.8.0.631688e.bin",
+          "sha256": "4e2219a8d2df79f39f9ea115d9175389c6dbd8536bd3f810a95e280e8eb5dcfe",
+          "bytes": 3469584
+        },
+        "firmware-elecrow-adv1-43-50-70-tft-2.8.0.631688e.factory.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-elecrow-adv1-43-50-70-tft-2.8.0.631688e.factory.bin",
+          "sha256": "5d14e2d6c4ced57f33a3e3a6df56ee6207668ac71a7f31a9b10cb1e2d8596b75",
+          "bytes": 3535120
+        },
+        "littlefs-elecrow-adv1-43-50-70-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/littlefs-elecrow-adv1-43-50-70-tft-2.8.0.631688e.bin",
+          "sha256": "231b4f3efd15efcb753799e0f7a438070c283ce3b90cf205748826b7f91266ac",
+          "bytes": 3538944
+        }
+      }
+    },
+    {
+      "board": "picomputer-s3-tft",
+      "platform": "esp32s3",
+      "device": {
+        "hwModel": 52,
+        "hwModelSlug": "PICOMPUTER_S3",
+        "platformioTarget": "picomputer-s3",
+        "architecture": "esp32-s3",
+        "activelySupported": true,
+        "supportLevel": 3,
+        "displayName": "Pi Computer S3 — MUI virtual node-list tester",
+        "hasMui": true,
+        "partitionScheme": "8MB",
+        "tags": [
+          "MUI tester"
+        ]
+      },
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-picomputer-s3-tft-2.8.0.631688e.mt.json",
+      "manifestSha256": "3ec275e6cb48d27412241148134b1f3f3fe3bb6924031cd1b6b40da9e03d4364",
+      "files": {
+        "firmware-picomputer-s3-tft-2.8.0.631688e.mt.json": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-picomputer-s3-tft-2.8.0.631688e.mt.json",
+          "sha256": "3ec275e6cb48d27412241148134b1f3f3fe3bb6924031cd1b6b40da9e03d4364",
+          "bytes": 1850
+        },
+        "firmware-picomputer-s3-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-picomputer-s3-tft-2.8.0.631688e.bin",
+          "sha256": "aa940f17e50b32eb5f8e1e72e3539f9c95337cdefdd549a2079a7bb59e3a5774",
+          "bytes": 3538368
+        },
+        "firmware-picomputer-s3-tft-2.8.0.631688e.factory.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-picomputer-s3-tft-2.8.0.631688e.factory.bin",
+          "sha256": "8b4c32b629de5100d52695c1075d294edf9a1e975d680f843adadc4e322cd2f7",
+          "bytes": 3603904
+        },
+        "littlefs-picomputer-s3-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/littlefs-picomputer-s3-tft-2.8.0.631688e.bin",
+          "sha256": "52f4247c36ff40220da0a8064240737b7dd342bee32a00ab8d3d033d9ab978f7",
+          "bytes": 1572864
+        }
+      }
+    },
+    {
+      "board": "rak_wismesh_tap_v2-tft",
+      "platform": "esp32s3",
+      "device": {
+        "hwModel": 116,
+        "hwModelSlug": "WISMESH_TAP_V2",
+        "platformioTarget": "rak_wismesh_tap_v2",
+        "architecture": "esp32-s3",
+        "activelySupported": true,
+        "supportLevel": 1,
+        "displayName": "RAK WisMesh Tap V2 — MUI virtual node-list tester",
+        "tags": [
+          "RAK",
+          "MUI tester"
+        ],
+        "hasMui": true,
+        "partitionScheme": "8MB",
+        "images": [
+          "rak-wismesh-tap-v2.svg"
+        ]
+      },
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-rak_wismesh_tap_v2-tft-2.8.0.631688e.mt.json",
+      "manifestSha256": "8698ceb585e4b988736808db7e4f1da5204f1ac87272b95a6c6e1859a61e746f",
+      "files": {
+        "firmware-rak_wismesh_tap_v2-tft-2.8.0.631688e.mt.json": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-rak_wismesh_tap_v2-tft-2.8.0.631688e.mt.json",
+          "sha256": "8698ceb585e4b988736808db7e4f1da5204f1ac87272b95a6c6e1859a61e746f",
+          "bytes": 1957
+        },
+        "firmware-rak_wismesh_tap_v2-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-rak_wismesh_tap_v2-tft-2.8.0.631688e.bin",
+          "sha256": "a9409909cf901cda0e1a8d47e9d913ae691ab51b6add0306e7cbebbf8aba8824",
+          "bytes": 3544832
+        },
+        "firmware-rak_wismesh_tap_v2-tft-2.8.0.631688e.factory.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-rak_wismesh_tap_v2-tft-2.8.0.631688e.factory.bin",
+          "sha256": "79a3444fef626f2a7427f3905838044d398b97026aa615d7450266cfc5c7bda7",
+          "bytes": 3610368
+        },
+        "littlefs-rak_wismesh_tap_v2-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/littlefs-rak_wismesh_tap_v2-tft-2.8.0.631688e.bin",
+          "sha256": "52f4247c36ff40220da0a8064240737b7dd342bee32a00ab8d3d033d9ab978f7",
+          "bytes": 1572864
+        }
+      }
+    },
+    {
+      "board": "seeed-sensecap-indicator-tft",
+      "platform": "esp32s3",
+      "device": {
+        "hwModel": 70,
+        "hwModelSlug": "SENSECAP_INDICATOR",
+        "platformioTarget": "seeed-sensecap-indicator",
+        "architecture": "esp32-s3",
+        "activelySupported": true,
+        "supportLevel": 1,
+        "displayName": "Seeed SenseCAP Indicator — MUI virtual node-list tester",
+        "tags": [
+          "Seeed",
+          "MUI tester"
+        ],
+        "images": [
+          "seeed-sensecap-indicator.svg"
+        ],
+        "hasMui": true,
+        "partitionScheme": "8MB"
+      },
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-seeed-sensecap-indicator-tft-2.8.0.631688e.mt.json",
+      "manifestSha256": "811d8f6e84c6fed376f6e9e6eaea5ed5771246abfce87ec5e45c481768fd6063",
+      "files": {
+        "firmware-seeed-sensecap-indicator-tft-2.8.0.631688e.mt.json": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-seeed-sensecap-indicator-tft-2.8.0.631688e.mt.json",
+          "sha256": "811d8f6e84c6fed376f6e9e6eaea5ed5771246abfce87ec5e45c481768fd6063",
+          "bytes": 2003
+        },
+        "firmware-seeed-sensecap-indicator-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-seeed-sensecap-indicator-tft-2.8.0.631688e.bin",
+          "sha256": "2658900a8e0edc06318913c87773620985bebfbb98a6e68899d03e6169106f9e",
+          "bytes": 3838784
+        },
+        "firmware-seeed-sensecap-indicator-tft-2.8.0.631688e.factory.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-seeed-sensecap-indicator-tft-2.8.0.631688e.factory.bin",
+          "sha256": "48cc9f74bb09213166b1bd0d04f24dd6f605348bbc665f3629a12d1906aedb7d",
+          "bytes": 3904320
+        },
+        "littlefs-seeed-sensecap-indicator-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/littlefs-seeed-sensecap-indicator-tft-2.8.0.631688e.bin",
+          "sha256": "9777d45362ac2969f896a7965f426a65eadc02c702a84bfa361c2d120f0aaf11",
+          "bytes": 1572864
+        }
+      }
+    },
     {
       "board": "t-deck-tft",
       "platform": "esp32s3",
@@ -36,8 +314,8 @@
         "platformioTarget": "t-deck",
         "architecture": "esp32-s3",
         "activelySupported": true,
-        "displayName": "LILYGO T-Deck — MUI virtual node-list tester",
         "supportLevel": 1,
+        "displayName": "LILYGO T-Deck — MUI virtual node-list tester",
         "tags": [
           "LilyGo",
           "MUI tester"
@@ -45,32 +323,75 @@
         "images": [
           "t-deck.svg"
         ],
-        "partitionScheme": "16MB",
         "requiresDfu": true,
-        "hasMui": true
+        "hasMui": true,
+        "partitionScheme": "16MB"
       },
-      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-599f1c3/firmware-t-deck-tft-2.8.0.599f1c3.mt.json",
-      "manifestSha256": "6009d733e33786dd96ae3da0ee465aaaa4c7dddbdb492993637ebae2d65a55b0",
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-t-deck-tft-2.8.0.631688e.mt.json",
+      "manifestSha256": "33a93e9359d1012112afcd0afc0adbc4e7f3fe52d1d0337f41f4128d7a019ca3",
       "files": {
-        "firmware-t-deck-tft-2.8.0.599f1c3.mt.json": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-599f1c3/firmware-t-deck-tft-2.8.0.599f1c3.mt.json",
-          "sha256": "6009d733e33786dd96ae3da0ee465aaaa4c7dddbdb492993637ebae2d65a55b0",
+        "firmware-t-deck-tft-2.8.0.631688e.mt.json": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-t-deck-tft-2.8.0.631688e.mt.json",
+          "sha256": "33a93e9359d1012112afcd0afc0adbc4e7f3fe52d1d0337f41f4128d7a019ca3",
           "bytes": 2052
         },
-        "firmware-t-deck-tft-2.8.0.599f1c3.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-599f1c3/firmware-t-deck-tft-2.8.0.599f1c3.bin",
-          "sha256": "0c8fb9231a304c78bc7d6fb7e0e6f439d6d6d623745e5a272648034ff34c4859",
+        "firmware-t-deck-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-t-deck-tft-2.8.0.631688e.bin",
+          "sha256": "70190bc026fc13ed6fc738323adc8364183a9dd30c70b8febf9fe6c53312ae5c",
           "bytes": 3864592
         },
-        "firmware-t-deck-tft-2.8.0.599f1c3.factory.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-599f1c3/firmware-t-deck-tft-2.8.0.599f1c3.factory.bin",
-          "sha256": "fe891495d86b152a1dd8d5684ec38e87c393fd4874b2188ef61a9bd3fdeccc00",
+        "firmware-t-deck-tft-2.8.0.631688e.factory.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-t-deck-tft-2.8.0.631688e.factory.bin",
+          "sha256": "5c669d62ce067b7343f3633e048a01d5797fc21f1ddd5c94f61dca024d1cfcf7",
           "bytes": 3930128
         },
-        "littlefs-t-deck-tft-2.8.0.599f1c3.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-599f1c3/littlefs-t-deck-tft-2.8.0.599f1c3.bin",
-          "sha256": "65fe7daf9f64dae16b20aa47b74e88576e402f2fd3c268c0537a344ed6c24104",
+        "littlefs-t-deck-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/littlefs-t-deck-tft-2.8.0.631688e.bin",
+          "sha256": "5d57cf8a8b3f7cb023afeedcde08ddcaa1f894eaeee9fc1efe26ccfed0b04cac",
           "bytes": 3538944
+        }
+      }
+    },
+    {
+      "board": "unphone-tft",
+      "platform": "esp32s3",
+      "device": {
+        "hwModel": 59,
+        "hwModelSlug": "UNPHONE",
+        "platformioTarget": "unphone",
+        "architecture": "esp32-s3",
+        "activelySupported": true,
+        "supportLevel": 3,
+        "displayName": "unPhone — MUI virtual node-list tester",
+        "requiresDfu": true,
+        "hasMui": true,
+        "partitionScheme": "8MB",
+        "tags": [
+          "MUI tester"
+        ]
+      },
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-unphone-tft-2.8.0.631688e.mt.json",
+      "manifestSha256": "856d6f49e04acea44cad2bab8fbfe83d5910d8ce3570ee47101c6c32435206b0",
+      "files": {
+        "firmware-unphone-tft-2.8.0.631688e.mt.json": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-unphone-tft-2.8.0.631688e.mt.json",
+          "sha256": "856d6f49e04acea44cad2bab8fbfe83d5910d8ce3570ee47101c6c32435206b0",
+          "bytes": 1830
+        },
+        "firmware-unphone-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-unphone-tft-2.8.0.631688e.bin",
+          "sha256": "5b1d97f6941a41dd701ad8740fabb1e1a749a4bb430cc4a0a22323111ef7c7ea",
+          "bytes": 3735280
+        },
+        "firmware-unphone-tft-2.8.0.631688e.factory.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/firmware-unphone-tft-2.8.0.631688e.factory.bin",
+          "sha256": "74d8be027ada3f4df5fc80f05193b85d8d78d78c0a719fc576e51d529601a654",
+          "bytes": 3800816
+        },
+        "littlefs-unphone-tft-2.8.0.631688e.bin": {
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-631688e/littlefs-unphone-tft-2.8.0.631688e.bin",
+          "sha256": "9777d45362ac2969f896a7965f426a65eadc02c702a84bfa361c2d120f0aaf11",
+          "bytes": 1572864
         }
       }
     }

@@ -43,6 +43,7 @@ import { t } from '~/utils/i18n'
 import { muiTesterOnly } from '~/utils/muiTester'
 import {
   fetchMuiCandidateTargetManifest,
+  getCachedMuiCandidateManifest,
   getMuiCandidateFileUrl,
   getMuiCandidateFirmwareResource,
   getMuiCandidateReleaseManifest,
@@ -509,7 +510,7 @@ export const useFirmwareStore = defineStore('firmware', {
     },
     getReleaseFileUrl(fileName: string): string {
       if (muiTesterOnly && this.selectedFirmware?.id === MUI_CANDIDATE_ID) {
-        const releaseTag = 'mui-node-list-20260824-599f1c3'
+        const releaseTag = getCachedMuiCandidateManifest()?.releaseTag || 'mui-node-list-20260824-631688e'
         return `https://rcgv1.github.io/mui-web-flasher/firmware/${releaseTag}/${fileName}`
       }
       // PR build files come from artifact zips, not meshtastic.github.io
@@ -797,7 +798,7 @@ export const useFirmwareStore = defineStore('firmware', {
         else {
           console.error(`Could not find app1 (OTA) file or partition offset in manifest`)
         }
-        
+
         this.flashingFileDescriptions = fileDescriptions
 
         if (filesToFlash.length === 0) {
@@ -900,7 +901,7 @@ export const useFirmwareStore = defineStore('firmware', {
         else {
           console.error(`Could not find SPIFFS file or partition offset for '${PARTITION_NAMES.SPIFFS}' in manifest`)
         }
-        
+
         this.flashingFileDescriptions = fileDescriptions
 
         if (filesToFlash.length === 0) {
@@ -952,22 +953,21 @@ export const useFirmwareStore = defineStore('firmware', {
       // and readSerial only returns when the port closes.
       this.trackDownload(flashed.selectedTarget, flashed.cleanInstall)
 
-
       // Perform hard reset - toggle RTS to reset the chip
       // This matches the original working reset sequence that was used before PR #297
       terminal.writeln('\x1b[33mHard resetting via RTS pin...\x1b[0m')
-      await transport.setRTS(true)   // EN=LOW (chip in reset)
+      await transport.setRTS(true) // EN=LOW (chip in reset)
       await new Promise(resolve => setTimeout(resolve, 100))
-      await transport.setRTS(false)  // EN=HIGH (chip out of reset - starts booting)
-      
+      await transport.setRTS(false) // EN=HIGH (chip out of reset - starts booting)
+
       // Disconnect the esptool transport to release its reader lock
       // This also closes the port, so we need to reopen it
       await transport.disconnect()
       await transport.waitForUnlock(1500)
-      
+
       // Small delay to let the chip start booting
       await new Promise(resolve => setTimeout(resolve, 200))
-      
+
       // Reopen the port at application baud rate (115200) to read boot logs
       if (this.port) {
         await this.port.open({ baudRate: 115200 })

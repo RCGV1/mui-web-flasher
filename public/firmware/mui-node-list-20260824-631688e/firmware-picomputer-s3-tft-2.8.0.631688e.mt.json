@@ -1,0 +1,82 @@
+{
+  "version": "2.8.0.631688e",
+  "build_epoch": 1787529600,
+  "platformioTarget": "picomputer-s3-tft",
+  "mcu": "esp32s3",
+  "repo": "RCGV1/firmware-Fork",
+  "files": [
+    {
+      "name": "firmware-picomputer-s3-tft-2.8.0.631688e.elf",
+      "md5": "ea0f3e5a58dbcc0d7232feac357bc0a5",
+      "bytes": 54033484
+    },
+    {
+      "name": "firmware-picomputer-s3-tft-2.8.0.631688e.bin",
+      "md5": "5d283a4c134e884860b3e548202c1bde",
+      "bytes": 3538368,
+      "part_name": "app0"
+    },
+    {
+      "name": "firmware-picomputer-s3-tft-2.8.0.631688e.factory.bin",
+      "md5": "fd798b26cb387d442118ce5c3fe324e1",
+      "bytes": 3603904
+    },
+    {
+      "name": "littlefs-picomputer-s3-tft-2.8.0.631688e.bin",
+      "md5": "a90b24f6386382c8ef0f44f83098da5e",
+      "bytes": 1572864,
+      "part_name": "spiffs"
+    }
+  ],
+  "has_mui": true,
+  "has_inkhud": false,
+  "part": [
+    {
+      "name": "nvs",
+      "type": "data",
+      "subtype": "nvs",
+      "offset": "0x9000",
+      "size": "0x5000",
+      "flags": ""
+    },
+    {
+      "name": "otadata",
+      "type": "data",
+      "subtype": "ota",
+      "offset": "0xe000",
+      "size": "0x2000",
+      "flags": ""
+    },
+    {
+      "name": "app0",
+      "type": "app",
+      "subtype": "ota_0",
+      "offset": "0x10000",
+      "size": "0x5C0000",
+      "flags": ""
+    },
+    {
+      "name": "flashApp",
+      "type": "app",
+      "subtype": "ota_1",
+      "offset": "0x5D0000",
+      "size": "0x0A0000",
+      "flags": ""
+    },
+    {
+      "name": "spiffs",
+      "type": "data",
+      "subtype": "spiffs",
+      "offset": "0x670000",
+      "size": "0x180000",
+      "flags": null
+    }
+  ],
+  "hwModel": 52,
+  "hwModelSlug": "PICOMPUTER_S3",
+  "architecture": "esp32-s3",
+  "activelySupported": true,
+  "displayName": "Pi Computer S3",
+  "supportLevel": 3,
+  "partitionScheme": "8MB"
+}
