@@ -237,16 +237,6 @@ export const useFirmwareStore = defineStore('firmware', {
       this.hasSeenReleaseNotes = true
     },
     async fetchList() {
-      if (muiTesterOnly) {
-        const candidate = await getMuiCandidateFirmwareResource()
-        this.stable = []
-        this.alpha = [candidate]
-        this.previews = []
-        this.pullRequests = []
-        await this.setSelectedFirmware(candidate)
-        return
-      }
-
       // Skip fetching firmware list in event mode - use locked firmware only
       if (eventMode.enabled) {
         console.log('Event mode enabled, skipping firmware API fetch')
@@ -259,6 +249,16 @@ export const useFirmwareStore = defineStore('firmware', {
         if (eventMode.firmware?.id && !this.releaseManifest) {
           await this.setSelectedFirmware(eventMode.firmware)
         }
+        return
+      }
+
+      if (muiTesterOnly) {
+        const candidate = await getMuiCandidateFirmwareResource()
+        this.stable = []
+        this.alpha = [candidate]
+        this.previews = []
+        this.pullRequests = []
+        await this.setSelectedFirmware(candidate)
         return
       }
 
