@@ -5,6 +5,15 @@ export function isMuiTesterTarget(target: { hasMui?: boolean }) {
 }
 
 export function publicPath(path: string) {
-  const base = import.meta.env.BASE_URL || '/'
+  const nuxt = globalThis as typeof globalThis & {
+    __NUXT__?: {
+      config?: {
+        app?: {
+          baseURL?: string
+        }
+      }
+    }
+  }
+  const base = nuxt.__NUXT__?.config?.app?.baseURL || import.meta.env.BASE_URL || '/'
   return `${base.replace(/\/$/, '')}/${path.replace(/^\//, '')}`
 }

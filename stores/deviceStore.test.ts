@@ -24,6 +24,10 @@ function makeTarget(overrides: Partial<DeviceHardware>): DeviceHardware {
 const SD73_ERASE = '/uf2/nrf_erase_sd7_3.uf2'
 const SD611_ERASE = '/uf2/nrf_erase2.uf2'
 
+function jsonResponse(body: unknown, status = 200): Response {
+  return new Response(JSON.stringify(body), { status })
+}
+
 describe('deviceStore factory-erase UF2 selection', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
@@ -87,5 +91,69 @@ describe('deviceStore factory-erase UF2 selection', () => {
   it('is not SoftDevice 7.3 when nothing is selected', () => {
     const store = useDeviceStore()
     expect(store.isSoftDevice7point3).toBe(false)
+  })
+})
+
+describe('deviceStore MUI tester candidate manifest', () => {
+  beforeEach(() => {
+    setActivePinia(createPinia())
+    vi.stubGlobal('__NUXT__', { config: { app: { baseURL: '/mui-web-flasher/' } } })
+    vi.stubGlobal('document', {
+      getElementById: vi.fn(() => ({ click: vi.fn() })),
+    })
+    vi.stubGlobal('fetch', vi.fn())
+  })
+
+  it('loads and selects the T-Deck from the Pages-relative tester manifest', async () => {
+    const tDeck = makeTarget({
+      hwModel: 50,
+      hwModelSlug: 'T_DECK',
+      platformioTarget: 't-deck',
+      architecture: 'esp32-s3',
+      displayName: 'LILYGO T-Deck — MUI virtual node-list tester',
+      supportLevel: 1,
+      tags: ['LilyGo', 'MUI tester'],
+      images: ['t-deck.svg'],
+      partitionScheme: '16MB',
+      requiresDfu: true,
+      hasMui: true,
+    })
+    const fetchMock = vi.mocked(fetch)
+    fetchMock.mockResolvedValueOnce(jsonResponse({
+      id: 'v2.8.0.599f1c3',
+      version: '2.8.0.599f1c3',
+      title: 'MUI virtual node-list tester firmware (T-Deck)',
+      releaseNotes: 'Tester notes',
+      releaseTag: 'mui-node-list-20260824-599f1c3',
+      buildTimestamp: '2026-08-24T19:22:39Z',
+      testerNotes: ['Add/receive 250 nodes.'],
+      source: {
+        firmware: { repo: 'RCGV1/firmware-Fork', branch: 'candidate/mui-node-list-tester-20260824', commit: '599f1c36ec5738cae8d330b095ff9f3f868b1ea3' },
+        deviceUi: { repo: 'RCGV1/device-ui', branch: 'candidate/virtual-node-list-improvement-20260824', commit: '9e84d74cb9bc4f2ef4cc577912b3d11b2ad29504' },
+        compileDefinition: 'DEVICE_UI_MUI_VIRTUAL_NODE_LIST',
+      },
+      targets: [
+        {
+          board: 't-deck-tft',
+          platform: 'esp32s3',
+          device: tDeck,
+          manifestUrl: 'https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-599f1c3/firmware-t-deck-tft-2.8.0.599f1c3.mt.json',
+          manifestSha256: '6009d733e33786dd96ae3da0ee465aaaa4c7dddbdb492993637ebae2d65a55b0',
+          files: {},
+        },
+      ],
+    }))
+
+    const store = useDeviceStore()
+    await store.fetchList()
+
+    expect(fetchMock).toHaveBeenCalledWith('/mui-web-flasher/data/mui-node-list-candidate.json')
+    expect(store.sortedDevices).toHaveLength(1)
+    expect(store.sortedDevices[0].platformioTarget).toBe('t-deck')
+
+    await store.setSelectedTarget(store.sortedDevices[0])
+
+    expect(store.selectedTarget?.platformioTarget).toBe('t-deck')
+    expect(store.selectedTarget?.hasMui).toBe(true)
   })
 })
