@@ -42,6 +42,7 @@ import {
   getMuiCandidateFirmwareResource,
   getMuiCandidateReleaseManifest,
   MUI_CANDIDATE_ID,
+  resolveMuiCandidateTarget,
 } from '~/utils/muiCandidate'
 
 import type {
@@ -587,6 +588,9 @@ export const useFirmwareStore = defineStore('firmware', {
      * @returns True if the target exists in the release manifest
      */
     isTargetAvailable(targetBoard: string): boolean {
+      if (muiTesterOnly && this.selectedFirmware?.id === MUI_CANDIDATE_ID) {
+        return !!resolveMuiCandidateTarget(getCachedMuiCandidateManifest(), targetBoard)
+      }
       if (!this.releaseManifest?.targets) return false
       return this.releaseManifest.targets.some(t => t.board === targetBoard)
     },

@@ -33,7 +33,7 @@ declare global {
 const firmwareApi = mande(createUrl('api/resource/deviceHardware'))
 
 export const shouldAutoSelectMui = (target: DeviceHardware) => {
-  if (muiTesterOnly && target.hasMui === true && target.platformioTarget !== 'heltec-v4') {
+  if (muiTesterOnly && target.hasMui === true) {
     return true
   }
   return target.hasMui === true && target.platformioTarget !== 'heltec-v4'
@@ -367,7 +367,7 @@ export const useDeviceStore = defineStore('device', {
         // Use a timeout and proceed anyway if it times out
         try {
           const configurePromise = device.configure()
-          const configureTimeout = new Promise<void>((resolve) =>
+          const configureTimeout = new Promise<void>(resolve =>
             setTimeout(resolve, 5000),
           )
           await Promise.race([configurePromise, configureTimeout])

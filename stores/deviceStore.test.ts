@@ -1,7 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { createPinia, setActivePinia } from 'pinia'
 import type { DeviceHardware } from '~/types/api'
-import { useDeviceStore } from './deviceStore'
+import { getMuiCandidateReleaseManifest, getMuiCandidateTarget } from '~/utils/muiCandidate'
+import { useDeviceStore, shouldAutoSelectMui } from './deviceStore'
+import { useFirmwareStore } from './firmwareStore'
 
 // The store module reads window.location at import time (createUrl).
 // vi.hoisted runs before the imports above are evaluated.
@@ -251,5 +253,23 @@ describe('deviceStore MUI tester candidate manifest', () => {
 
     expect(store.selectedTarget?.platformioTarget).toBe('t-deck')
     expect(store.selectedTarget?.hasMui).toBe(true)
+
+    const heltec = store.sortedDevices.find(device => device.platformioTarget === 'heltec-v4')
+    expect(heltec).toBeTruthy()
+    expect(shouldAutoSelectMui(heltec!)).toBe(true)
+    await store.setSelectedTarget(heltec!)
+    expect(store.selectedTarget?.platformioTarget).toBe('heltec-v4')
+    expect(useFirmwareStore().$state.shouldInstallMui).toBe(true)
+
+    const firmwareStore = useFirmwareStore()
+    firmwareStore.$state.selectedFirmware = { id: 'v2.8.0.0d652f6', title: 'MUI virtual node-list tester firmware' }
+    firmwareStore.$state.releaseManifest = await getMuiCandidateReleaseManifest()
+
+    for (const device of testerDevices) {
+      const candidateTarget = await getMuiCandidateTarget(device.platformioTarget)
+      expect(candidateTarget, device.platformioTarget).toBeTruthy()
+      expect(candidateTarget?.device.platformioTarget).toBe(device.platformioTarget)
+      expect(firmwareStore.isTargetAvailable(device.platformioTarget), device.platformioTarget).toBe(true)
+    }
   })
 })

@@ -47,6 +47,15 @@ export const MUI_CANDIDATE_ID = 'v2.8.0.0d652f6'
 let candidatePromise: Promise<CandidateManifest> | undefined
 let candidateCache: CandidateManifest | undefined
 
+export function resolveMuiCandidateTarget(candidate: CandidateManifest | undefined, targetBoard: string): CandidateTarget | undefined {
+  if (!candidate || !targetBoard) return undefined
+  const matches = candidate.targets.filter(target =>
+    target.board === targetBoard
+    || target.device.platformioTarget === targetBoard,
+  )
+  return matches.length === 1 ? matches[0] : undefined
+}
+
 export async function loadMuiCandidateManifest(): Promise<CandidateManifest> {
   candidatePromise ??= fetch(publicPath('/data/mui-node-list-candidate.json')).then(async (response) => {
     if (!response.ok) {
@@ -90,7 +99,7 @@ export async function getMuiCandidateReleaseManifest(): Promise<ReleaseManifest>
 
 export async function fetchMuiCandidateTargetManifest(targetBoard: string): Promise<FirmwareManifest | undefined> {
   const candidate = await loadMuiCandidateManifest()
-  const target = candidate.targets.find(target => target.board === targetBoard)
+  const target = resolveMuiCandidateTarget(candidate, targetBoard)
   if (!target) return undefined
 
   const response = await fetch(target.manifestUrl)
@@ -111,5 +120,5 @@ export async function getMuiCandidateFileUrl(fileName: string): Promise<string |
 
 export async function getMuiCandidateTarget(targetBoard: string): Promise<CandidateTarget | undefined> {
   const candidate = await loadMuiCandidateManifest()
-  return candidate.targets.find(target => target.board === targetBoard)
+  return resolveMuiCandidateTarget(candidate, targetBoard)
 }
