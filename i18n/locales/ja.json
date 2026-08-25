@@ -37,19 +37,22 @@
   "firmware": {
     "title": "ファームウェア",
     "select_firmware": "ファームウェアを選択",
-    "instructions": "リリースオプションから選択するか、GitHub からダウンロードした zip ファイルをアップロードします。",
-    "stable": "安定版（またはベータ版）",
-    "unstable": "不安定版（アルファ版）",
-    "prerelease": "プレリリース版",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "API からファームウェアのバージョンを取得できませんでした。",
     "refresh_later": "後でページを更新して再度お試しください。",
-    "upload_alternative": "または、GitHub リリースから firmware.zip ファイルをアップロードするか、 ESP32 ベースのデバイスの個々の firmware-update.bin ファイルをアイコンをクリックしてアップロードすることもできます。",
-    "upload_tooltip": "独自のファームウェアリリースの zip または bin をアップロードします。",
-    "icon": "アイコン"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "アイコン",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "書き込み",
-    "instructions": "端末に書き込みます。端末を更新するか、端末を消去して一からインストールするかを選択します。",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "フラッシュメモリを消去",
     "erase_flash_prefix": "次のフラッシュメモリを消去",
     "dfu_action_doubleclick": "RST ボタンをダブルクリックします。",
@@ -98,7 +101,9 @@
       "dfu_warning": "この操作を行うとデバイスが完全に消去されます。",
       "wait_for_drive": "ドライブが消えるのを待ち、シリアルモニタを開いて消去プロセスを完了します。",
       "close_instructions": "このポップアップを閉じてファームウェアバージョンを選択し、書き込みを開始します。"
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "シリアルモニターを開く",

@@ -37,19 +37,22 @@
   "firmware": {
     "title": "Firmware",
     "select_firmware": "Vybrat firmware",
-    "instructions": "Vyberte z možností vydání nebo nahrajte zip stažený z Githubu.",
-    "stable": "Stabilní (nebo Beta)",
-    "unstable": "Nestabilní (Alfa)",
-    "prerelease": "Předběžné vydání",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "Nelze načíst verze firmwaru z API.",
     "refresh_later": "Obnovte stránku později a zkuste to znovu.",
-    "upload_alternative": "Alternativně můžete nahrát soubor firmware.zip z Githubu nebo individuální soubor firmware-update.bin pro zařízení založené na ESP32 kliknutím na ikonu.",
-    "upload_tooltip": "Nahrajte vlastní zip nebo binární verzi firmwaru.",
-    "icon": "ikona"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "ikona",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "Flash",
-    "instructions": "Proveďte flashování zařízení. Zvolte, zda chcete zařízení aktualizovat, nebo vymazat flash a nainstalovat jej od začátku.",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "Vymazat flash",
     "erase_flash_prefix": "Vymazat flash",
     "dfu_action_doubleclick": "dvojitým kliknutím na tlačítko RST.",
@@ -98,7 +101,9 @@
       "dfu_warning": "Tato operace zcela vymaže vaše zařízení.",
       "wait_for_drive": "Počkejte, až disk zmizí, a poté otevřete sériový monitor, aby se proces mazání dokončil.",
       "close_instructions": "Zavřete toto vyskakovací okno, vyberte verzi firmwaru a spusťte flashování."
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "Otevřít Serial Monitor",

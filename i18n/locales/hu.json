@@ -37,19 +37,22 @@
   "firmware": {
     "title": "Firmware",
     "select_firmware": "Firmware kiválasztása",
-    "instructions": "Válassz a kiadások közül, vagy tölts fel egy a GitHubról letöltött kiadási ZIP-fájlt.",
-    "stable": "Stabil (vagy Béta)",
-    "unstable": "Nem stabil (Alfa)",
-    "prerelease": "Előzetes kiadás",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "Nem sikerült lekérni a firmware-verziókat az API-ból.",
     "refresh_later": "Frissítsd az oldalt később, és próbáld újra.",
-    "upload_alternative": "Alternatív megoldásként feltölthetsz egy firmware.zip fájlt a GitHub kiadásokból, vagy egy firmware-update.bin fájlt ESP32 alapú eszközhöz az ikonra kattintva.",
-    "upload_tooltip": "Saját firmware-kiadás ZIP vagy BIN feltöltése.",
-    "icon": "ikon"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "ikon",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "Flashelés",
-    "instructions": "Flasheld az eszközt. Válaszd ki, hogy frissíteni szeretnéd, vagy teljes törlés után újratelepíteni.",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "Flash törlése",
     "erase_flash_prefix": "Flash törlése az eszközön",
     "dfu_action_doubleclick": "a RST gomb kétszeri megnyomásával.",
@@ -98,7 +101,9 @@
       "dfu_warning": "Ez a művelet teljesen törli az eszközt.",
       "wait_for_drive": "Várd meg, amíg a meghajtó eltűnik, majd nyiss meg egy soros konzolt a törlési folyamat befejezéséhez.",
       "close_instructions": "Zárd be ezt az ablakot, hogy kiválaszd a firmware-verziót és elkezdd a flashelést."
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "Soros konzol megnyitása",

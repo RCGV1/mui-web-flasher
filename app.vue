@@ -9,7 +9,7 @@
     </div>
     <!-- PR test build banner -->
     <div
-      v-if="prBuild"
+      v-if="prBuild && !muiTesterOnly"
       class="bg-warning text-black text-center text-sm px-3 py-2.5"
     >
       <p>
@@ -503,8 +503,7 @@ window.addEventListener('keydown', (event) => {
 
     konamiCodeIndex.value++
     if (konamiCodeIndex.value === konamiKeys.length) {
-      // Pre-release and nightly builds are available to everyone now, so the
-      // code only turns on the easter eggs.
+      // The code only turns on the easter eggs.
       console.log('Unlocking easter eggs')
       firmwareStore.$state.konamiUnlocked = true
       document.body.classList.add('konami-code')
@@ -543,19 +542,8 @@ onMounted(() => {
   window.addEventListener('popstate', syncSurveyFromUrl)
   onUnmounted(() => window.removeEventListener('popstate', syncSurveyFromUrl))
 
-  // Load a PR test build when arriving via a ?pr= deep link (posted by the
-  // GitHub bot comment on firmware pull requests)
-  if (!eventMode.value.enabled) {
-    const params = new URLSearchParams(window.location.search)
-    const prNumber = Number.parseInt(params.get('pr') ?? '', 10)
-    if (Number.isInteger(prNumber) && prNumber > 0) {
-      firmwareStore.loadPrFirmware(prNumber).then((loaded) => {
-        if (loaded) {
-          selectDeviceFromQuery(params.get('device'))
-        }
-      })
-    }
-  }
+  const params = new URLSearchParams(window.location.search)
+  selectDeviceFromQuery(params.get('device'))
 })
 </script>
 

@@ -37,19 +37,22 @@
   "firmware": {
     "title": "Firmware",
     "select_firmware": "Select Firmware",
-    "instructions": "Trieu una de les opcions de llançament o pengeu un ZIP de llançament descarregat de Github.",
-    "stable": "Stable (or Beta)",
-    "unstable": "Unstable (Alpha)",
-    "prerelease": "Pre-release",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "Could not fetch firmware versions from API.",
     "refresh_later": "Refresh the page later to try again.",
-    "upload_alternative": "Alternativament, podeu penjar un fitxer firmware.zip des de les versions de GitHub o un fitxer firmware-update.bin individual per a un dispositiu basat en ESP32 fent clic a la icona.",
-    "upload_tooltip": "Upload your own firmware release zip or bin.",
-    "icon": "icon"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "icon",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "Flash",
-    "instructions": "Flash your device. Choose whether you wish to update your device or wipe the flash and install from scratch.",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "Erase Flash",
     "erase_flash_prefix": "Erase Flash of",
     "dfu_action_doubleclick": "double-clicking RST button.",
@@ -98,7 +101,9 @@
       "dfu_warning": "This operation will erase your device completely.",
       "wait_for_drive": "Wait for the drive to disappear, then open a serial monitor to complete the erase process.",
       "close_instructions": "Close this popup to select a firmware version and begin flashing."
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "Open Serial Monitor",

@@ -37,19 +37,22 @@
   "firmware": {
     "title": "Firmware",
     "select_firmware": "Firmware auswählen",
-    "instructions": "Wählen Sie eine Version, oder laden Sie eine Zip-Datei von Github hoch.",
-    "stable": "Stabil (oder Beta)",
-    "unstable": "Instabil (Alpha)",
-    "prerelease": "Vorabversion",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "Konnte Versionen nicht von API abrufen.",
     "refresh_later": "Aktualisieren Sie die Seite um es erneut zu versuchen.",
-    "upload_alternative": "Alternativ können Sie eine Firmware.zip-Datei aus den Github Releases oder eine individuelle Firmware-update.bin Datei für ein ESP32 basiertes Gerät hochladen, indem Sie auf das Icon klicken.",
-    "upload_tooltip": "Laden Sie Ihre eigene Firmware Release zip oder bin hoch.",
-    "icon": "icon"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "icon",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "Flash",
-    "instructions": "Flashen Sie Ihr Gerät. Wählen Sie, ob Sie Ihr Gerät aktualisieren oder neu installieren möchten.",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "Speicher löschen",
     "erase_flash_prefix": "Speicher löschen von",
     "dfu_action_doubleclick": "drücken Sie zweimal schnell auf die RST-Taste.",
@@ -98,7 +101,9 @@
       "dfu_warning": "Dieser Vorgang löscht Ihr Gerät vollständig.",
       "wait_for_drive": "Warten Sie, bis das Laufwerk verschwindet, dann öffnen Sie die serielle Konsole, um den Löschvorgang abzuschließen.",
       "close_instructions": "Schließen Sie dieses Popup, um eine Firmware-Version auszuwählen und mit dem Flashen zu beginnen."
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "Serielle Konsole öffnen",

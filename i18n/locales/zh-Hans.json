@@ -34,19 +34,22 @@
   "firmware": {
     "title": "固件",
     "select_firmware": "选择固件",
-    "instructions": "从release选项中选择或上传从Github下载的发行zip。",
-    "stable": "稳定(Beta版)",
-    "unstable": "不稳定(Alpha版)",
-    "prerelease": "预发布（Pre-release版）",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "无法从 API 获取固件版本。",
     "refresh_later": "稍后刷新页面以再试一次。",
-    "upload_alternative": "或者，您可以通过单击图标从 Github 版本上传一个 firmware.zip 文件或单独的 firmware-update.bin 文件到 ESP32 设备。",
-    "upload_tooltip": "上传您自己的固件版本 zip 或 bin。",
-    "icon": "图标"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "图标",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "刷写",
-    "instructions": "刷写您的设备。选择您是要更新您的设备，还是要擦除设备闪存并从头安装。",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "擦除闪存",
     "erase_flash_prefix": "擦除 Flash",
     "dfu_action_doubleclick": "双击RST按钮",
@@ -95,7 +98,9 @@
       "dfu_warning": "此操作将完全擦除您的设备。",
       "wait_for_drive": "等待驱动器“消失”，然后打开串行监视器来完成擦除过程。",
       "close_instructions": "关闭此弹出窗口以选择一个固件版本并开始刷入。"
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "打开串行监视器",

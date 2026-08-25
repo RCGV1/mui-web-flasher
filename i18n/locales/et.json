@@ -37,19 +37,22 @@
   "firmware": {
     "title": "Püsivara",
     "select_firmware": "Vali püsivara",
-    "instructions": "Vali väljalaske valikute hulgast või lae zip fail Githubist.",
-    "stable": "Stabiilne (või Beta)",
-    "unstable": "Ebastabiilne (või Alfa)",
-    "prerelease": "Väljalaske kanditaat",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "Püsivara versiooni ei õnnestunud API -st laadida.",
     "refresh_later": "Värskenda lehte või proovi hiljem uuesti.",
-    "upload_alternative": "Alternatiivselt saate ikoonil klõpsates paigaldada ESP32-põhise seadmetele firmware.zip-faili Githubi versiooni või eraldi firmware-update.bin -failist.",
-    "upload_tooltip": "Paigalda enda zip või bin püsivara versioon.",
-    "icon": "ikoon"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "ikoon",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "Paigalda",
-    "instructions": "Programmeeri oma seade. Vali, kas soovid seadet uuendada või seade tühjendada ning nullist alustada.",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "Kustuta programm",
     "erase_flash_prefix": "Kustuta programm",
     "dfu_action_doubleclick": "topeltklõps RST nupuga.",
@@ -98,7 +101,9 @@
       "dfu_warning": "See toiming tühjendab seadme täielikult.",
       "wait_for_drive": "Oodake, kuni ketas kaob, seejärel avage jadapordi monitor kustutamisprotsessi lõpule viimiseks.",
       "close_instructions": "Sule see hüpikaken, vali püsivara versioon ja alustada programmeerimist."
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "Ava jadapordi monitor",

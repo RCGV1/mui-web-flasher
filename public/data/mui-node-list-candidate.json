@@ -2,7 +2,7 @@
   "id": "v2.8.0.0d652f6",
   "version": "2.8.0.0d652f6",
   "title": "MUI virtual node-list tester firmware (all MUI targets)",
-  "releaseNotes": "## Virtual MUI node-list tester firmware\n\nTester-only Meshtastic firmware for validating the MUI virtual node-list implementation across all currently verified MUI targets. This is not a Meshtastic stable release.\n\nBefore and after flashing, please test: add/receive 250 nodes; scroll rapidly; update an off-screen node; filter, reorder, and resync; look for stale rows, crashes, resets, or memory problems; then report device target and result.\n\nSource is pinned to RCGV1/firmware-Fork@0d652f66d5a58e23f7fd1505e23c03a4a6ada302 with RCGV1/device-ui@9e84d74cb9bc4f2ef4cc577912b3d11b2ad29504 and DEVICE_UI_MUI_VIRTUAL_NODE_LIST=1 enabled. Artifact hashes and build timestamp are included in this manifest.",
+  "releaseNotes": "## Virtual MUI node-list tester firmware\n\nTester-only Meshtastic firmware for validating the MUI virtual node-list implementation across all currently verified MUI targets. This is not an official Meshtastic production release.\n\nBefore and after flashing, please test: add/receive 250 nodes; scroll rapidly; update an off-screen node; filter, reorder, and resync; look for stale rows, crashes, resets, or memory problems; then report device target and result.\n\nSource is pinned to RCGV1/firmware-Fork@0d652f66d5a58e23f7fd1505e23c03a4a6ada302 with RCGV1/device-ui@9e84d74cb9bc4f2ef4cc577912b3d11b2ad29504 and DEVICE_UI_MUI_VIRTUAL_NODE_LIST=1 enabled. Artifact hashes and build timestamp are included in this manifest.",
   "releaseTag": "mui-node-list-20260824-0d652f6",
   "buildTimestamp": "2026-08-24T23:37:58Z",
   "testerNotes": [

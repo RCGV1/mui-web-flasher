@@ -37,19 +37,22 @@
   "firmware": {
     "title": "Прошивка",
     "select_firmware": "Виберіть прошивку",
-    "instructions": "Оберіть версію реліза або завантажте релізний ZIP-архів із GitHub.",
-    "stable": "Стабільна (або Бета)",
-    "unstable": "Нестабільна (Альфа)",
-    "prerelease": "Попередній реліз",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "Не вдалося отримати версії прошивки з API.",
     "refresh_later": "Оновіть сторінку пізніше, щоб спробувати знову.",
-    "upload_alternative": "Альтернативно ви можете завантажити файл firmware.zip із релізів GitHub або окремий firmware-update.bin для пристроїв на базі ESP32, натиснувши на іконку.",
-    "upload_tooltip": "Завантажити власну прошивку (zip або bin).",
-    "icon": "іконка"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "іконка",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "Прошивка",
-    "instructions": "Прошийте свій пристрій. Виберіть, чи хочете ви просто оновити прошивку або повністю очистити флеш-пам'ять і встановити з нуля.",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "Стерти флеш-пам'ять",
     "erase_flash_prefix": "Стерти флеш-пам'ять з",
     "dfu_action_doubleclick": "подвійним натисканням кнопки RST.",
@@ -98,7 +101,9 @@
       "dfu_warning": "Ця операція повністю очистить ваш пристрій.",
       "wait_for_drive": "Дочекайтесь зникнення диска, потім відкрийте serial monitor для завершення процесу.",
       "close_instructions": "Закрийте це вікно, щоб вибрати версію прошивки та почати прошивку."
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "Відкрити serial monitor",

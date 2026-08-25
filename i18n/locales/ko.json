@@ -37,19 +37,22 @@
   "firmware": {
     "title": "펌웨어",
     "select_firmware": "펌웨어 선택",
-    "instructions": "배포 옵션 중에서 선택하거나 GitHub에서 다운로드한 ZIP 파일을 업로드하세요.",
-    "stable": "안정버전 (또는 Beta)",
-    "unstable": "불안정버전 (Alpha)",
-    "prerelease": "사전 배포",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "API에서 펌웨어 버전을 가져올 수 없습니다.",
     "refresh_later": "나중에 페이지를 새로 고쳐 다시 시도해 주세요.",
-    "upload_alternative": "대신 GitHub 릴리스에서 firmware.zip 파일을 업로드하거나 ESP32 기반 장치용 개별 firmware-update.bin 파일을 아이콘을 클릭하여 업로드할 수 있습니다.",
-    "upload_tooltip": "펌웨어 릴리스 ZIP 또는 BIN 파일을 업로드하세요.",
-    "icon": "아이콘"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "아이콘",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "플래시",
-    "instructions": "장치를 플래시하세요. 장치를 업데이트할지, 기존 펌웨어를 지우고 처음부터 설치할지 선택하세요.",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "펌웨어 지우기",
     "erase_flash_prefix": "펌웨어 지우기",
     "dfu_action_doubleclick": "RST 버튼 더블클릭",
@@ -98,7 +101,9 @@
       "dfu_warning": "이 작업은 기기를 완전히 초기화합니다.",
       "wait_for_drive": "드라이브가 사라질 때까지 기다린 후 시리얼 모니터를 열어 삭제 과정을 완료합니다.",
       "close_instructions": "이 팝업을 닫고 펌웨어 버전을 선택한 후 플래싱을 시작하세요."
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "시리얼 모니터 열기",

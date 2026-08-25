@@ -37,19 +37,22 @@
   "firmware": {
     "title": "Firmware",
     "select_firmware": "Välj firmware",
-    "instructions": "Välj mellan versionsalternativen eller ladda upp en firmware-zip hämtad från Github.",
-    "stable": "Stabila (eller Beta-versioner)",
-    "unstable": "Instabila (Alfa-versioner)",
-    "prerelease": "Förhandsversioner",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "Kunde inte hämta firmware-versioner från API.",
     "refresh_later": "Uppdatera sidan för att försöka igen.",
-    "upload_alternative": "Du kan alternativt ladda upp en firmware.zip-fil från Github eller en individuell firmware-update.bin-fil för en ESP32-baserad enhet genom att klicka på ikonen.",
-    "upload_tooltip": "Ladda upp din egen firmware-zip eller binärfil.",
-    "icon": "ikon"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "ikon",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "Programmera",
-    "instructions": "Programmera enheten. Välj om du vill uppdatera din enhet eller tömma internminnet och installera om från grunden.",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "Radera flashminnet",
     "erase_flash_prefix": "Radera flashminnet på",
     "dfu_action_doubleclick": "dubbelklicka på RST-knappen.",
@@ -98,7 +101,9 @@
       "dfu_warning": "Denna åtgärd kommer att radera allt på din enhet.",
       "wait_for_drive": "Vänta på att lagringsenheten försvinner, öppna seda en seriell konsol för att slutföra raderingsprocessen.",
       "close_instructions": "Stäng denna pop-up för att välja en firmware-version och påbörja installationen."
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "Öppna seriell konsol",

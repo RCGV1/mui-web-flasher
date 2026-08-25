@@ -37,19 +37,22 @@
   "firmware": {
     "title": "Micrologiciel",
     "select_firmware": "Sélectionnez le micrologiciel",
-    "instructions": "Choisissez une version ou importez un zip depuis GitHub.",
-    "stable": "Stable (ou Bêta)",
-    "unstable": "Instable (Alpha)",
-    "prerelease": "Pré-version",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "Impossible de récupérer les versions du micrologiciel depuis l'API.",
     "refresh_later": "Rafraîchissez la page plus tard pour réessayer.",
-    "upload_alternative": "Vous pouvez également télécharger un fichier firmware.zip à partir des versions de Github ou un fichier firmware-update.bin individuel pour un appareil basé sur ESP32 en cliquant sur l'icône.",
-    "upload_tooltip": "Téléversez votre propre version du micrologiciel ZIP ou BIN.",
-    "icon": "icône"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "icône",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "Flash",
-    "instructions": "Flashez votre appareil. Choisissez si vous souhaitez simplement le mettre à jour ou effacer la mémoire flash et installer le micrologiciel depuis zéro.",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "Effacer la mémoire interne",
     "erase_flash_prefix": "Effacer la mémoire interne de ",
     "dfu_action_doubleclick": "double-cliquer sur le bouton RST",
@@ -98,7 +101,9 @@
       "dfu_warning": "Cette opération effacera complètement votre appareil.",
       "wait_for_drive": "Attendez que le lecteur disparaisse, puis ouvrez un moniteur série pour terminer le processus d'effacement.",
       "close_instructions": "Fermez cette fenêtre pour sélectionner une version du micrologiciel et commencer le flash."
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "Ouvrir le moniteur série",

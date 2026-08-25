@@ -34,19 +34,22 @@
   "firmware": {
     "title": "韌體",
     "select_firmware": "選擇韌體",
-    "instructions": "請從版本選項中選擇，或上傳從 Github 下載的 release zip 檔。",
-    "stable": "穩定版（或 Beta 版）",
-    "unstable": "不穩定版（Alpha 版）",
-    "prerelease": "預先發行版（Pre-release 版）",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "無法從 API 取得韌體版本資訊。",
     "refresh_later": "請稍後重新整理頁面再試一次。",
-    "upload_alternative": "或是您也可以點選圖示，從 Github 發行頁上傳韌體的 .zip 檔，或針對 ESP32 裝置上傳個別的 firmware-update.bin 檔案。",
-    "upload_tooltip": "上傳您自己的韌體 zip 或 bin 檔案。",
-    "icon": "圖示"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "圖示",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "燒錄",
-    "instructions": "開始燒錄您的裝置。請選擇您要更新裝置，還是清除快閃記憶體並重新安裝韌體。",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "清除快閃記憶體",
     "erase_flash_prefix": "清除裝置的快閃記憶體：",
     "dfu_action_doubleclick": "快速按兩下 RST 按鈕。",
@@ -95,7 +98,9 @@
       "dfu_warning": "此操作將會完全清除您的裝置。",
       "wait_for_drive": "請等待磁碟自動卸除後，再開啟序列監控工具以完成清除程式。",
       "close_instructions": "請關閉此視窗，選擇韌體版本並開始燒錄。"
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "開啟序列監控工具",

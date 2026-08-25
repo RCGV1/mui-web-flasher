@@ -37,19 +37,22 @@
   "firmware": {
     "title": "Laiteohjelmisto",
     "select_firmware": "Valitse laiteohjelmisto",
-    "instructions": "Valitse julkaisuvaihtoehdoista tai lataa zip-tiedosto GitHubista.",
-    "stable": "Vakaa (tai Beta)",
-    "unstable": "Epävakaa (Alpha)",
-    "prerelease": "Esijulkaisu",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "Sovellusliittymän (API) laiteohjelmistoversioita ei voitu noutaa.",
     "refresh_later": "Päivitä sivu tai yritä myöhemmin uudelleen.",
-    "upload_alternative": "Vaihtoehtoisesti voit ladata firmware.zip tai firmware-update.bin tiedoston GitHubista ESP32 pohjaiselle laitteelle napsauttamalla kuvaketta.",
-    "upload_tooltip": "Lataa oma laiteohjelma zip- tai bin-tiedostosta.",
-    "icon": "kuvake"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "kuvake",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "Ohjelmoi",
-    "instructions": "Ohjelmoi laite ja valitse haluatko päivittää sen, pyyhkiä edellisen ohjelmoinnin vai asentaa sen tyhjästä.",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "Pyyhi ohjelmointi",
     "erase_flash_prefix": "Pyyhi ohjelmointi",
     "dfu_action_doubleclick": "tuplanapsauta RST-painiketta.",
@@ -98,7 +101,9 @@
       "dfu_warning": "Tämä toiminto tyhjentää laitteesi kokonaan.",
       "wait_for_drive": "Odota, että asema ei enää näy ja avaa sen jälkeen sarjavalvontaohjelma tyhjennyksen loppuun saattamiseksi.",
       "close_instructions": "Sulje tämä ponnahdusikkuna valitaksesi laiteohjelmistoversion ja aloittaaksesi ohjelmoinnin."
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "Avaa sarjaportin valvonta",

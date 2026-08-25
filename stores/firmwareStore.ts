@@ -5,23 +5,17 @@ import {
   Transport,
 } from 'esptool-js'
 import { saveAs } from 'file-saver'
-import { mande } from 'mande'
 import { defineStore } from 'pinia'
 import type { Terminal } from '@xterm/xterm'
 import { supportsNew8MBPartitionTable } from '~/utils/versionUtils'
 import { convertToBinaryString } from '~/utils/fileUtils'
 import { openTerminal } from '~/utils/terminal'
 import {
-  currentPrerelease,
-  showPrerelease,
   eventMode,
 } from '~/types/resources'
 import {
   getFirmwareBaseUrl,
-  GITHUB_IO_BASE,
-  NIGHTLY_DIR,
   nightlyState,
-  setNightlyVersion,
 } from '~/utils/firmwareUrl'
 import {
   addRumAction,
@@ -52,7 +46,6 @@ import {
 
 import type {
   DeviceHardware,
-  FirmwareReleases,
   FirmwareResource,
   PrBuildResponse,
 } from '../types/api'
@@ -67,10 +60,6 @@ import {
 
 import { createUrl } from './store'
 import { useToastStore } from './toastStore'
-
-const previews = showPrerelease ? [currentPrerelease] : []
-
-const firmwareApi = mande(createUrl('api/github/firmware/list'))
 
 // In-flight PR artifact downloads, keyed by architecture. Kept outside the
 // store state so the promises are not made reactive.
@@ -150,7 +139,7 @@ export const useFirmwareStore = defineStore('firmware', {
     return {
       stable: new Array<FirmwareResource>(),
       alpha: new Array<FirmwareResource>(),
-      previews: previews,
+      previews: new Array<FirmwareResource>(),
       nightly: new Array<FirmwareResource>(),
       pullRequests: new Array<FirmwareResource>(),
       prFirmware: <FirmwareResource | undefined>undefined,
@@ -253,78 +242,15 @@ export const useFirmwareStore = defineStore('firmware', {
         return
       }
 
-      if (muiTesterOnly) {
-        const candidate = await getMuiCandidateFirmwareResource()
-        this.stable = []
-        this.alpha = [candidate]
-        this.previews = []
-        this.pullRequests = []
-        await this.setSelectedFirmware(candidate)
-        return
-      }
-
-      firmwareApi.get<FirmwareReleases>()
-        .then(async (response: FirmwareReleases) => {
-          // Fetch release notes for each firmware version from meshtastic.github.io
-          const fetchReleaseNotesForList = async (releases: FirmwareResource[]) => {
-            for (const release of releases) {
-              // Only fetch if we don't already have release notes from the API
-              if (!release.release_notes || release.release_notes.trim().length === 0) {
-                release.release_notes = await fetchReleaseNotes(release.id)
-              }
-            }
-          }
-
-          // This fork is for MUI tester firmware, not stable-release flashing.
-          this.stable = muiTesterOnly ? [] : response.releases.stable.slice(0, 4)
-          this.alpha = response.releases.alpha.filter(f => !f.title.includes('Preview')).slice(0, 4)
-          this.previews = [
-            ...response.releases.alpha
-              .filter(f => f.title.includes('Preview') && !f.title.includes('2.6.0')) // Exclude 2.6.0 preview
-              .slice(0, 4),
-            ...previews,
-          ]
-          this.pullRequests = response.pullRequests.slice(0, 4)
-
-          // Fetch release notes for all versions in parallel
-          await Promise.all([
-            fetchReleaseNotesForList(this.stable),
-            fetchReleaseNotesForList(this.alpha),
-            fetchReleaseNotesForList(this.previews),
-            fetchReleaseNotesForList(this.pullRequests),
-          ])
-        })
-        .catch((error) => {
-          console.error('Error fetching firmware list:', error)
-          this.couldntFetchFirmwareApi = true
-        })
+      const candidate = await getMuiCandidateFirmwareResource()
+      this.stable = []
+      this.alpha = [candidate]
+      this.previews = []
+      this.pullRequests = []
+      await this.setSelectedFirmware(candidate)
     },
-    /**
-     * Discover the current develop "nightly" build published to
-     * meshtastic.github.io/firmware-nightly/. Skipped entirely in event mode
-     * (never on event firmwares).
-     */
     async fetchNightly() {
-      if (eventMode.enabled) return
-      try {
-        const response = await fetch(`${GITHUB_IO_BASE}/${NIGHTLY_DIR}/index.json`)
-        if (!response.ok) return // 404 before the first nightly is published -> no section
-        const data = await response.json() as { version?: string, id?: string, title?: string }
-        const id = data.id ?? (data.version ? `v${data.version}` : undefined)
-        if (!id) {
-          console.warn('Nightly index.json missing id/version', data)
-          return // malformed pointer -> don't surface a broken entry
-        }
-        setNightlyVersion(id) // register so getManifestBasePath routes it to firmware-nightly/
-        const version = id.replace(/^v/, '')
-        this.nightly = [{
-          id,
-          title: data.title ?? `Meshtastic Firmware ${version} Nightly`,
-        }]
-      }
-      catch (error) {
-        console.warn('No nightly build available', error)
-      }
+      return
     },
     /**
      * Load a pull request's CI build as a selectable firmware version.

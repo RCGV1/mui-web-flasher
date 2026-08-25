@@ -37,19 +37,22 @@
   "firmware": {
     "title": "Фърмуер",
     "select_firmware": "Изберете фърмуер",
-    "instructions": "Изберете от опциите за избор на версия или качете zip файл, изтеглен от Github.",
-    "stable": "Стабилна (или Бета)",
-    "unstable": "Нестабилна (Алфа)",
-    "prerelease": "Предварителна версия",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "Не можаха да се извлекат версии на фърмуера от API.",
     "refresh_later": "Опреснете страницата по-късно, за да опитате отново.",
-    "upload_alternative": "Като алтернатива, можете да качите файл firmware.zip от версиите на Github или отделен файл firmware-update.bin за устройство, базирано на ESP32, като щракнете върху иконата.",
-    "upload_tooltip": "Качете собствена версия на фърмуера във формат на файла zip или bin.",
-    "icon": "икона"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "икона",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "Програмиране",
-    "instructions": "Програмирайте устройството си. Изберете дали искате да актуализирате устройството си или да изтриете флаш паметта и да инсталирате от нулата.",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "Изтриване на флаш паметта",
     "erase_flash_prefix": "Изтриване на флаш паметта на",
     "dfu_action_doubleclick": "двукратно щракване върху бутона RST.",
@@ -98,7 +101,9 @@
       "dfu_warning": "Тази операция ще изтрие напълно вашето устройство.",
       "wait_for_drive": "Wait for the drive to disappear, then open a serial monitor to complete the erase process.",
       "close_instructions": "Затворете този изскачащ прозорец, за да изберете версия на фърмуера и да започнете програмирането."
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "Отваряне на серийния монитор",

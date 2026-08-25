@@ -1,14 +1,20 @@
 <template>
-  <div class="relative inline-flex items-center gap-2">
+  <div class="relative inline-flex flex-col items-center gap-2">
     <button
       data-modal-target="flash-modal"
       data-modal-toggle="flash-modal"
       class="btn-primary disabled:bg-zinc-600"
       type="button"
       :disabled="!canFlash"
+      :title="flashButtonTitle"
+      :aria-disabled="!canFlash"
     >
       {{ $t('flash.title') }}
     </button>
+    <p class="max-w-xs text-center text-xs leading-snug text-theme-muted">
+      <span v-if="!hasSelectedDevice">{{ $t('flash.disabled_until_device') }}</span>
+      <span v-else>{{ $t('flash.web_serial_requirement') }}</span>
+    </p>
     <button
       v-show="['nrf52840', 'rp2040'].includes(deviceStore.selectedArchitecture)"
       data-tooltip-target="tooltip-erase"
@@ -109,6 +115,7 @@
 <script lang="ts" setup>
 import { checkIfRemoteFileExists } from '~/utils/fileUtils'
 import { muiTesterOnly } from '~/utils/muiTester'
+import { useI18n } from 'vue-i18n'
 
 import { Trash } from 'lucide-vue-next'
 
@@ -120,6 +127,7 @@ import FlashHeader from './targets/FlashHeader.vue'
 const firmwareStore = useFirmwareStore()
 const deviceStore = useDeviceStore()
 const serialMonitorStore = useSerialMonitorStore()
+const { t } = useI18n()
 
 const fileExistsOnServer = ref(false)
 
@@ -196,12 +204,29 @@ const preflightCheck = async () => {
   }
 }
 
+const hasSelectedDevice = computed(() => {
+  return (deviceStore.selectedTarget?.hwModel ?? 0) > 0
+})
+
+const hasUsableFirmware = computed(() => {
+  return muiTesterOnly ? firmwareStore.hasOnlineFirmware : firmwareStore.hasFirmwareFile || firmwareStore.hasOnlineFirmware
+})
+
+const isWebSerialSupported = computed(() => {
+  return typeof navigator !== 'undefined' && 'serial' in navigator
+})
+
+const flashButtonTitle = computed(() => {
+  if (!hasSelectedDevice.value) return t('flash.disabled_until_device')
+  if (!isWebSerialSupported.value) return t('flash.web_serial_requirement')
+  return t('flash.title')
+})
+
 // Either we have a custom zip file or a selected firmware release
 const canFlash = computed(() => {
-  const hasDevice = deviceStore.selectedTarget?.hwModel > 0
-  const hasFirmware = firmwareStore.hasFirmwareFile || firmwareStore.hasOnlineFirmware
-  return !serialMonitorStore.isConnected && hasDevice && hasFirmware
-    && (fileExistsOnServer.value || firmwareStore.hasFirmwareFile)
+  const hasAvailableFile = muiTesterOnly ? fileExistsOnServer.value : fileExistsOnServer.value || firmwareStore.hasFirmwareFile
+  return !serialMonitorStore.isConnected && hasSelectedDevice.value && hasUsableFirmware.value
+    && hasAvailableFile && isWebSerialSupported.value
 })
 </script>
 

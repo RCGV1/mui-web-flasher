@@ -37,19 +37,22 @@
   "firmware": {
     "title": "Firmware",
     "select_firmware": "Selecione o Firmware",
-    "instructions": "Escolha entre as opções de lançamento ou carregue um ficheiro zip descarregado do Github.",
-    "stable": "Estável (ou Beta)",
-    "unstable": "Instável (Alfa)",
-    "prerelease": "Pré-lançamento",
+    "instructions": "Select a supported MUI device; this tester uses the pinned virtual node-list candidate firmware for that target.",
+    "stable": "MUI tester candidate",
+    "unstable": "MUI tester candidate",
+    "prerelease": "MUI tester candidate",
     "error_fetching": "Não foi possível obter as versões do firmware da API.",
     "refresh_later": "Atualize a página mais tarde e tente novamente.",
-    "upload_alternative": "Como alternativa, pode fazer o upload de um ficheiro firmware.zip das versões do Github ou de um ficheiro firmware-update.bin para um dispositivo baseado em ESP32 clicando no ícone.",
-    "upload_tooltip": "Carregue seu próprio arquivo zip ou bin de versão de firmware.",
-    "icon": "icon"
+    "upload_alternative": "Local firmware uploads are not available in this tester flasher.",
+    "upload_tooltip": "Local firmware uploads are not available in this tester flasher.",
+    "icon": "icon",
+    "mui_candidate": "Virtual MUI node-list tester firmware",
+    "mui_locked": "Exactly one virtual node-list tester candidate is pinned for the selected MUI device. Official releases and local uploads are not available here.",
+    "nightly": "MUI tester candidate"
   },
   "flash": {
     "title": "Instalar",
-    "instructions": "Instale no seu dispositivo. Escolha se deseja atualizar o dispositivo ou apagar e instalar do zero.",
+    "instructions": "Flash the pinned virtual MUI node-list tester firmware. Requires Chrome or Edge on desktop with Web Serial; Safari is not supported.",
     "erase_flash": "Apagar flash",
     "erase_flash_prefix": "Apagar flash de",
     "dfu_action_doubleclick": "clicando duas vezes no botão RST.",
@@ -98,7 +101,9 @@
       "dfu_warning": "Esta operação apagará o seu dispositivo completamente.",
       "wait_for_drive": "Espere pelo desaparecimento da unidade e, em seguida, abra um monitor de série para concluir o processo de apagamento.",
       "close_instructions": "Feche este pop-up para selecionar uma versão de firmware e começar a instalar."
-    }
+    },
+    "disabled_until_device": "Select a supported MUI device to enable Flash.",
+    "web_serial_requirement": "Flashing requires Chrome or Edge on desktop with Web Serial. Safari is not supported."
   },
   "buttons": {
     "serial_monitor": "Abrir Monitor de Série",
