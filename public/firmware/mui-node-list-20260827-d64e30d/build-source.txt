@@ -1,0 +1,8 @@
+release_tag=mui-node-list-20260827-d64e30d
+firmware_repo=RCGV1/firmware-Fork
+firmware_ref=6da76d5b60534328928267861273bf6d0b92579e
+device_ui_repo=RCGV1/device-ui
+device_ui_ref=d64e30d05951a43136889e412c713b45af0e81e8
+targets=elecrow-adv-24-28-tft elecrow-adv-35-tft elecrow-adv1-43-50-70-tft heltec-v4-tft picomputer-s3-tft rak_wismesh_tap_v2-tft seeed-sensecap-indicator-tft t-deck-tft unphone-tft
+compile_definition=DEVICE_UI_MUI_VIRTUAL_NODE_LIST
+build_timestamp=2026-08-27T20:50:12Z

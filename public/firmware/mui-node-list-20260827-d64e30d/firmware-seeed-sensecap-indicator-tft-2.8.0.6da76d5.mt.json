@@ -1,0 +1,88 @@
+{
+  "version": "2.8.0.6da76d5",
+  "build_epoch": 1787788800,
+  "platformioTarget": "seeed-sensecap-indicator-tft",
+  "mcu": "esp32s3",
+  "repo": "RCGV1/firmware-Fork",
+  "files": [
+    {
+      "name": "firmware-seeed-sensecap-indicator-tft-2.8.0.6da76d5.elf",
+      "md5": "fd3dbd2d1e35887c3f85e56ae6f74474",
+      "bytes": 59284432
+    },
+    {
+      "name": "firmware-seeed-sensecap-indicator-tft-2.8.0.6da76d5.bin",
+      "md5": "5b5e11bb93c1473b488d2676e59c6be1",
+      "bytes": 3826352,
+      "part_name": "app0"
+    },
+    {
+      "name": "firmware-seeed-sensecap-indicator-tft-2.8.0.6da76d5.factory.bin",
+      "md5": "2020561ead63d2d376f70d1fd1142f86",
+      "bytes": 3891888
+    },
+    {
+      "name": "littlefs-seeed-sensecap-indicator-tft-2.8.0.6da76d5.bin",
+      "md5": "6a7122acca991fdeb9e602367f4c68af",
+      "bytes": 1572864,
+      "part_name": "spiffs"
+    }
+  ],
+  "has_mui": true,
+  "has_inkhud": false,
+  "part": [
+    {
+      "name": "nvs",
+      "type": "data",
+      "subtype": "nvs",
+      "offset": "0x9000",
+      "size": "0x5000",
+      "flags": ""
+    },
+    {
+      "name": "otadata",
+      "type": "data",
+      "subtype": "ota",
+      "offset": "0xe000",
+      "size": "0x2000",
+      "flags": ""
+    },
+    {
+      "name": "app0",
+      "type": "app",
+      "subtype": "ota_0",
+      "offset": "0x10000",
+      "size": "0x5C0000",
+      "flags": ""
+    },
+    {
+      "name": "flashApp",
+      "type": "app",
+      "subtype": "ota_1",
+      "offset": "0x5D0000",
+      "size": "0x0A0000",
+      "flags": ""
+    },
+    {
+      "name": "spiffs",
+      "type": "data",
+      "subtype": "spiffs",
+      "offset": "0x670000",
+      "size": "0x180000",
+      "flags": null
+    }
+  ],
+  "hwModel": 70,
+  "hwModelSlug": "SENSECAP_INDICATOR",
+  "architecture": "esp32-s3",
+  "activelySupported": true,
+  "displayName": "Seeed SenseCAP Indicator",
+  "supportLevel": 1,
+  "images": [
+    "seeed-sensecap-indicator.svg"
+  ],
+  "tags": [
+    "Seeed"
+  ],
+  "partitionScheme": "8MB"
+}

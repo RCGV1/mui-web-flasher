@@ -1,0 +1,88 @@
+{
+  "version": "2.8.0.6da76d5",
+  "build_epoch": 1787788800,
+  "platformioTarget": "rak_wismesh_tap_v2-tft",
+  "mcu": "esp32s3",
+  "repo": "RCGV1/firmware-Fork",
+  "files": [
+    {
+      "name": "firmware-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.elf",
+      "md5": "eeac91c84f6d8a00aeb6cb34ccd23ba9",
+      "bytes": 53127460
+    },
+    {
+      "name": "firmware-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.bin",
+      "md5": "296834a8ff2ffe5424447ed76eece611",
+      "bytes": 3532784,
+      "part_name": "app0"
+    },
+    {
+      "name": "firmware-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.factory.bin",
+      "md5": "a46df29becad24511e09974b78db6c6c",
+      "bytes": 3598320
+    },
+    {
+      "name": "littlefs-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.bin",
+      "md5": "ce4fae8d0ea9ac3a97ef59b8b48bd8d7",
+      "bytes": 1572864,
+      "part_name": "spiffs"
+    }
+  ],
+  "has_mui": true,
+  "has_inkhud": false,
+  "part": [
+    {
+      "name": "nvs",
+      "type": "data",
+      "subtype": "nvs",
+      "offset": "0x9000",
+      "size": "0x5000",
+      "flags": ""
+    },
+    {
+      "name": "otadata",
+      "type": "data",
+      "subtype": "ota",
+      "offset": "0xe000",
+      "size": "0x2000",
+      "flags": ""
+    },
+    {
+      "name": "app0",
+      "type": "app",
+      "subtype": "ota_0",
+      "offset": "0x10000",
+      "size": "0x5C0000",
+      "flags": ""
+    },
+    {
+      "name": "flashApp",
+      "type": "app",
+      "subtype": "ota_1",
+      "offset": "0x5D0000",
+      "size": "0x0A0000",
+      "flags": ""
+    },
+    {
+      "name": "spiffs",
+      "type": "data",
+      "subtype": "spiffs",
+      "offset": "0x670000",
+      "size": "0x180000",
+      "flags": null
+    }
+  ],
+  "hwModel": 116,
+  "hwModelSlug": "WISMESH_TAP_V2",
+  "architecture": "esp32-s3",
+  "activelySupported": true,
+  "displayName": "RAK WisMesh Tap V2",
+  "supportLevel": 1,
+  "images": [
+    "rak-wismesh-tap-v2.svg"
+  ],
+  "tags": [
+    "RAK"
+  ],
+  "partitionScheme": "16MB"
+}

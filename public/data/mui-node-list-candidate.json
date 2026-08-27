@@ -1,10 +1,10 @@
 {
-  "id": "v2.8.0.6da76d5",
-  "version": "2.8.0.6da76d5",
+  "id": "v2.8.0.d64e30d",
+  "version": "2.8.0.d64e30d",
   "title": "MUI virtual node-list tester firmware (all MUI targets)",
-  "releaseNotes": "## Virtual MUI node-list tester firmware\n\nTester-only Meshtastic firmware for validating the MUI virtual node-list implementation across all verified MUI targets. This is not an official Meshtastic production release.\n\nBefore and after flashing, please test: add/receive 250 nodes; scroll rapidly; update an off-screen node; filter, reorder, and resync; look for stale rows, crashes, resets, or memory problems; then report device target and result.\n\nSource is pinned to RCGV1/firmware-Fork@6da76d5b60534328928267861273bf6d0b92579e with RCGV1/device-ui@9e84d74cb9bc4f2ef4cc577912b3d11b2ad29504 and DEVICE_UI_MUI_VIRTUAL_NODE_LIST=1 enabled. Artifact hashes and build timestamp are included in this manifest.",
-  "releaseTag": "mui-node-list-20260825-6da76d5",
-  "buildTimestamp": "2026-08-27T06:42:04Z",
+  "releaseNotes": "## Virtual MUI node-list tester firmware\n\nTester-only Meshtastic firmware for validating the MUI virtual node-list implementation across all verified MUI targets. This is not an official Meshtastic production release.\n\nBefore and after flashing, please test: add/receive 250 nodes; scroll rapidly; update an off-screen node; filter, reorder, and resync; look for stale rows, crashes, resets, or memory problems; then report device target and result.\n\nSource is pinned to RCGV1/firmware-Fork@6da76d5b60534328928267861273bf6d0b92579e with RCGV1/device-ui@d64e30d05951a43136889e412c713b45af0e81e8 and DEVICE_UI_MUI_VIRTUAL_NODE_LIST=1 enabled. Artifact hashes and build timestamp are included in this manifest.",
+  "releaseTag": "mui-node-list-20260827-d64e30d",
+  "buildTimestamp": "2026-08-27T20:50:12Z",
   "testerNotes": [
     "Add or receive 250 nodes on the mesh.",
     "Scroll rapidly through the MUI node list.",
@@ -22,7 +22,7 @@
     "deviceUi": {
       "repo": "RCGV1/device-ui",
       "branch": "candidate/virtual-node-list-improvement-20260824",
-      "commit": "9e84d74cb9bc4f2ef4cc577912b3d11b2ad29504"
+      "commit": "d64e30d05951a43136889e412c713b45af0e81e8"
     },
     "compileDefinition": "DEVICE_UI_MUI_VIRTUAL_NODE_LIST",
     "compileValue": "1"
@@ -51,27 +51,27 @@
         "partitionScheme": "16MB",
         "hasMui": true
       },
-      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-elecrow-adv-24-28-tft-2.8.0.6da76d5.mt.json",
-      "manifestSha256": "df877bebac1e9e385f154d54eb2e009dd33de3557fe677fe5e330b0814206a76",
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-elecrow-adv-24-28-tft-2.8.0.6da76d5.mt.json",
+      "manifestSha256": "9511fa70d0c385d7632862a960eb989374fa3b01f3ca162a70482fe6426712bf",
       "files": {
         "firmware-elecrow-adv-24-28-tft-2.8.0.6da76d5.mt.json": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-elecrow-adv-24-28-tft-2.8.0.6da76d5.mt.json",
-          "sha256": "df877bebac1e9e385f154d54eb2e009dd33de3557fe677fe5e330b0814206a76",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-elecrow-adv-24-28-tft-2.8.0.6da76d5.mt.json",
+          "sha256": "9511fa70d0c385d7632862a960eb989374fa3b01f3ca162a70482fe6426712bf",
           "bytes": 2155
         },
         "firmware-elecrow-adv-24-28-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-elecrow-adv-24-28-tft-2.8.0.6da76d5.bin",
-          "sha256": "802b6d087768dc5d774f03567fcc68f70769b902b0677b3717443ba53fe784ce",
-          "bytes": 3472096
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-elecrow-adv-24-28-tft-2.8.0.6da76d5.bin",
+          "sha256": "4ce19086a64ab72415ad5d18a8d522aa26a12f7a0a193f571b915a075c044bf2",
+          "bytes": 3459600
         },
         "firmware-elecrow-adv-24-28-tft-2.8.0.6da76d5.factory.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-elecrow-adv-24-28-tft-2.8.0.6da76d5.factory.bin",
-          "sha256": "d9bbb621a8f3dbd7d08658e9e7166243d40198cde7d1ea84a8adbe5e2f28a1f7",
-          "bytes": 3537632
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-elecrow-adv-24-28-tft-2.8.0.6da76d5.factory.bin",
+          "sha256": "a048628e019425e8c468e7eaf6975daa3c2fe1a5a57908bee333db0aef42fdc3",
+          "bytes": 3525136
         },
         "littlefs-elecrow-adv-24-28-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/littlefs-elecrow-adv-24-28-tft-2.8.0.6da76d5.bin",
-          "sha256": "31ff5095be6d54f5d6e67bbbd205015120ca50a8e5aa629e8078f07af555c651",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/littlefs-elecrow-adv-24-28-tft-2.8.0.6da76d5.bin",
+          "sha256": "07c223656868f6fc8c6ad72684c75689221cd84d2278f22d809f99a4934c543d",
           "bytes": 3538944
         }
       }
@@ -98,27 +98,27 @@
         "partitionScheme": "16MB",
         "hasMui": true
       },
-      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-elecrow-adv-35-tft-2.8.0.6da76d5.mt.json",
-      "manifestSha256": "b3a93072ab42c7010730a4c1532337b56ddbfcf34f533ac1bb0f3bf5ec028d03",
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-elecrow-adv-35-tft-2.8.0.6da76d5.mt.json",
+      "manifestSha256": "5a7141f26b3d804ab971d5e3fa95433b2128d9a610c8dd5b486049e081ab95fc",
       "files": {
         "firmware-elecrow-adv-35-tft-2.8.0.6da76d5.mt.json": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-elecrow-adv-35-tft-2.8.0.6da76d5.mt.json",
-          "sha256": "b3a93072ab42c7010730a4c1532337b56ddbfcf34f533ac1bb0f3bf5ec028d03",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-elecrow-adv-35-tft-2.8.0.6da76d5.mt.json",
+          "sha256": "5a7141f26b3d804ab971d5e3fa95433b2128d9a610c8dd5b486049e081ab95fc",
           "bytes": 2111
         },
         "firmware-elecrow-adv-35-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-elecrow-adv-35-tft-2.8.0.6da76d5.bin",
-          "sha256": "f012e5f46f68094f5b99a25db0090054f321861424ca6d5b213db3b6b4c4ffa4",
-          "bytes": 3471504
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-elecrow-adv-35-tft-2.8.0.6da76d5.bin",
+          "sha256": "3a0f10d1a4ece1b80d7772f10e50dedb664272f48d69d8c625765567ad5d1f3e",
+          "bytes": 3459968
         },
         "firmware-elecrow-adv-35-tft-2.8.0.6da76d5.factory.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-elecrow-adv-35-tft-2.8.0.6da76d5.factory.bin",
-          "sha256": "855a92ff48abb2c835e1bda8eb3d45b6e00cbeb37c5fc2c207f61f38eff7f933",
-          "bytes": 3537040
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-elecrow-adv-35-tft-2.8.0.6da76d5.factory.bin",
+          "sha256": "a295d388a63e7de10bd8c0c8388ab9e7149809f586c94cbbddc53551a5dc7bc2",
+          "bytes": 3525504
         },
         "littlefs-elecrow-adv-35-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/littlefs-elecrow-adv-35-tft-2.8.0.6da76d5.bin",
-          "sha256": "31ff5095be6d54f5d6e67bbbd205015120ca50a8e5aa629e8078f07af555c651",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/littlefs-elecrow-adv-35-tft-2.8.0.6da76d5.bin",
+          "sha256": "be3e5029ced039436ded7356d3645b2492a11766c36b59f725423e1f4407a0a3",
           "bytes": 3538944
         }
       }
@@ -146,27 +146,27 @@
         "partitionScheme": "16MB",
         "hasMui": true
       },
-      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-elecrow-adv1-43-50-70-tft-2.8.0.6da76d5.mt.json",
-      "manifestSha256": "5e97a08597f0623ba10b57713321cfe8a5cf17013ddefc0b5da238bd6a28b100",
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-elecrow-adv1-43-50-70-tft-2.8.0.6da76d5.mt.json",
+      "manifestSha256": "cabe0805b2b72ad8b7b75652df79b84d20ac74b52c5ebb26a25070dc76826714",
       "files": {
         "firmware-elecrow-adv1-43-50-70-tft-2.8.0.6da76d5.mt.json": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-elecrow-adv1-43-50-70-tft-2.8.0.6da76d5.mt.json",
-          "sha256": "5e97a08597f0623ba10b57713321cfe8a5cf17013ddefc0b5da238bd6a28b100",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-elecrow-adv1-43-50-70-tft-2.8.0.6da76d5.mt.json",
+          "sha256": "cabe0805b2b72ad8b7b75652df79b84d20ac74b52c5ebb26a25070dc76826714",
           "bytes": 2179
         },
         "firmware-elecrow-adv1-43-50-70-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-elecrow-adv1-43-50-70-tft-2.8.0.6da76d5.bin",
-          "sha256": "437c87955913ada3dfc3f7a00454a024553dcd2ca95a344bac005a411824e25f",
-          "bytes": 3483344
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-elecrow-adv1-43-50-70-tft-2.8.0.6da76d5.bin",
+          "sha256": "62c060b64d95b38fc877179bd3b348af865750ada9d21733806a6e00d982ebc8",
+          "bytes": 3471056
         },
         "firmware-elecrow-adv1-43-50-70-tft-2.8.0.6da76d5.factory.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-elecrow-adv1-43-50-70-tft-2.8.0.6da76d5.factory.bin",
-          "sha256": "5f5995d7ca9e3c1ea9c25f0baca56b6cff35424c9e08557b7a96836facb27efe",
-          "bytes": 3548880
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-elecrow-adv1-43-50-70-tft-2.8.0.6da76d5.factory.bin",
+          "sha256": "19ed65a8dfa7f9bea1e30818bc0c89f7b97f6f6187ea6ee9280e99d9ec3328dc",
+          "bytes": 3536592
         },
         "littlefs-elecrow-adv1-43-50-70-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/littlefs-elecrow-adv1-43-50-70-tft-2.8.0.6da76d5.bin",
-          "sha256": "31ff5095be6d54f5d6e67bbbd205015120ca50a8e5aa629e8078f07af555c651",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/littlefs-elecrow-adv1-43-50-70-tft-2.8.0.6da76d5.bin",
+          "sha256": "07c223656868f6fc8c6ad72684c75689221cd84d2278f22d809f99a4934c543d",
           "bytes": 3538944
         }
       }
@@ -193,27 +193,27 @@
         "partitionScheme": "16MB",
         "hasMui": true
       },
-      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-heltec-v4-tft-2.8.0.6da76d5.mt.json",
-      "manifestSha256": "54e2f6d2204e80d89c27f5b38664e883400e928a2f480d6576e40d378ba32838",
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-heltec-v4-tft-2.8.0.6da76d5.mt.json",
+      "manifestSha256": "65abbb07a6902757783d926cde632b75e3e6acce087f948a53533046b678b414",
       "files": {
         "firmware-heltec-v4-tft-2.8.0.6da76d5.mt.json": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-heltec-v4-tft-2.8.0.6da76d5.mt.json",
-          "sha256": "54e2f6d2204e80d89c27f5b38664e883400e928a2f480d6576e40d378ba32838",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-heltec-v4-tft-2.8.0.6da76d5.mt.json",
+          "sha256": "65abbb07a6902757783d926cde632b75e3e6acce087f948a53533046b678b414",
           "bytes": 2074
         },
         "firmware-heltec-v4-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-heltec-v4-tft-2.8.0.6da76d5.bin",
-          "sha256": "51279a061c0cc3025f5c1593318f1c49db0f02b621969a2b66913b80ec0d118e",
-          "bytes": 3752640
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-heltec-v4-tft-2.8.0.6da76d5.bin",
+          "sha256": "5a05718242af5fc8a895e1f9369e712a4b32cdf6e7ba6004bef4ce06c5734879",
+          "bytes": 3738832
         },
         "firmware-heltec-v4-tft-2.8.0.6da76d5.factory.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-heltec-v4-tft-2.8.0.6da76d5.factory.bin",
-          "sha256": "32fdbce3b930fb413d75c8290f0e99649ff024065ed55311700beef3bef13b68",
-          "bytes": 3818176
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-heltec-v4-tft-2.8.0.6da76d5.factory.bin",
+          "sha256": "7ffbf3df00603c3b66c68ca1f702f249494982c9705ac7445ccc9574004f1b3b",
+          "bytes": 3804368
         },
         "littlefs-heltec-v4-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/littlefs-heltec-v4-tft-2.8.0.6da76d5.bin",
-          "sha256": "6b1f3501cd06a24950c79ec1ba1a475df32bd42d5c29ab8282411430fc9bdd2a",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/littlefs-heltec-v4-tft-2.8.0.6da76d5.bin",
+          "sha256": "07c223656868f6fc8c6ad72684c75689221cd84d2278f22d809f99a4934c543d",
           "bytes": 3538944
         }
       }
@@ -235,27 +235,27 @@
           "MUI tester"
         ]
       },
-      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-picomputer-s3-tft-2.8.0.6da76d5.mt.json",
-      "manifestSha256": "4209d83d0c9f12e64498b4cc4fb0b2dbb615705f71716eb82300eb5e7f6c1d93",
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-picomputer-s3-tft-2.8.0.6da76d5.mt.json",
+      "manifestSha256": "956962c81da3efd258d75691b7b2ae69ae1cae9cd204a8243a3d2d05eeebfa61",
       "files": {
         "firmware-picomputer-s3-tft-2.8.0.6da76d5.mt.json": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-picomputer-s3-tft-2.8.0.6da76d5.mt.json",
-          "sha256": "4209d83d0c9f12e64498b4cc4fb0b2dbb615705f71716eb82300eb5e7f6c1d93",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-picomputer-s3-tft-2.8.0.6da76d5.mt.json",
+          "sha256": "956962c81da3efd258d75691b7b2ae69ae1cae9cd204a8243a3d2d05eeebfa61",
           "bytes": 1850
         },
         "firmware-picomputer-s3-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-picomputer-s3-tft-2.8.0.6da76d5.bin",
-          "sha256": "ef43b5e0a7b091572fab3e703cb9c4a475439ee2076a6da97a4f32b296560235",
-          "bytes": 3538368
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-picomputer-s3-tft-2.8.0.6da76d5.bin",
+          "sha256": "e419526d320b3c872bdf4dded3382805d0c974bef868fe94d6b5001098e23193",
+          "bytes": 3525280
         },
         "firmware-picomputer-s3-tft-2.8.0.6da76d5.factory.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-picomputer-s3-tft-2.8.0.6da76d5.factory.bin",
-          "sha256": "fb7dd96039bb15b3d6ab0d204fda6825ea588ed0193a2c7c8a0523b7c5516d19",
-          "bytes": 3603904
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-picomputer-s3-tft-2.8.0.6da76d5.factory.bin",
+          "sha256": "0956e1870efd15041d9f16176793f57d94caf1543131476c223f398047876d74",
+          "bytes": 3590816
         },
         "littlefs-picomputer-s3-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/littlefs-picomputer-s3-tft-2.8.0.6da76d5.bin",
-          "sha256": "f593cfbbbf607af1f9edbffe57f09a33ef6c1bfded102236ed7e11801532363c",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/littlefs-picomputer-s3-tft-2.8.0.6da76d5.bin",
+          "sha256": "bd981fc479d70e1ebbee98e95119df40d52d441c44aee9cc67b098e8a0c181a0",
           "bytes": 1572864
         }
       }
@@ -281,27 +281,27 @@
           "rak-wismesh-tap-v2.svg"
         ]
       },
-      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.mt.json",
-      "manifestSha256": "5c0e19b0e1713a07d00f05e26c0928ee1730f47296bf7b559c940951d4105dfb",
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.mt.json",
+      "manifestSha256": "b23cc0ece808e247a5d02881daefb0eedb94b6dbcdb86306d280ff77abf8961a",
       "files": {
         "firmware-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.mt.json": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.mt.json",
-          "sha256": "5c0e19b0e1713a07d00f05e26c0928ee1730f47296bf7b559c940951d4105dfb",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.mt.json",
+          "sha256": "b23cc0ece808e247a5d02881daefb0eedb94b6dbcdb86306d280ff77abf8961a",
           "bytes": 1957
         },
         "firmware-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.bin",
-          "sha256": "f0a3998f10a382e0c26944ccf83fb7c800e96d4f7dce79b089613f273d45edc5",
-          "bytes": 3544832
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.bin",
+          "sha256": "39ea5277f128c7b82efc607948d064fcff5bef4a4c16564433d11c87fae79477",
+          "bytes": 3532784
         },
         "firmware-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.factory.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.factory.bin",
-          "sha256": "d4e3354cc55d9ec68d7c7962c9cfa36e509b5dba87eeb3ffd3a8f45a1908e3a2",
-          "bytes": 3610368
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.factory.bin",
+          "sha256": "bf80c20049b9067b9a90a063aa98f66c39b1a817eed99d390e1e97eacada04a6",
+          "bytes": 3598320
         },
         "littlefs-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/littlefs-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.bin",
-          "sha256": "2ebbd5fdcbdc5bcc82af78d2187e2e2d5b6ed37a38a42b2e6c833f598989ae77",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/littlefs-rak_wismesh_tap_v2-tft-2.8.0.6da76d5.bin",
+          "sha256": "bd981fc479d70e1ebbee98e95119df40d52d441c44aee9cc67b098e8a0c181a0",
           "bytes": 1572864
         }
       }
@@ -327,27 +327,27 @@
         "hasMui": true,
         "partitionScheme": "8MB"
       },
-      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-seeed-sensecap-indicator-tft-2.8.0.6da76d5.mt.json",
-      "manifestSha256": "8cd17d9871dc68d704f5f62a356bca064547ea65d0beeb655327a8b2eb1901c1",
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-seeed-sensecap-indicator-tft-2.8.0.6da76d5.mt.json",
+      "manifestSha256": "1d956478e601ff2bae05efb8dde8c66eefbfb4d7d7573d5b6c002800f78931cd",
       "files": {
         "firmware-seeed-sensecap-indicator-tft-2.8.0.6da76d5.mt.json": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-seeed-sensecap-indicator-tft-2.8.0.6da76d5.mt.json",
-          "sha256": "8cd17d9871dc68d704f5f62a356bca064547ea65d0beeb655327a8b2eb1901c1",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-seeed-sensecap-indicator-tft-2.8.0.6da76d5.mt.json",
+          "sha256": "1d956478e601ff2bae05efb8dde8c66eefbfb4d7d7573d5b6c002800f78931cd",
           "bytes": 2003
         },
         "firmware-seeed-sensecap-indicator-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-seeed-sensecap-indicator-tft-2.8.0.6da76d5.bin",
-          "sha256": "35024b1a2c808bbcefba79ea79dcc8a632d324dfe5a915d6427bcba72eeb1868",
-          "bytes": 3838784
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-seeed-sensecap-indicator-tft-2.8.0.6da76d5.bin",
+          "sha256": "7be35fe4a2d8055a1c1f27401a23ecaf3be00d5e4c4259875753eb5df0a30247",
+          "bytes": 3826352
         },
         "firmware-seeed-sensecap-indicator-tft-2.8.0.6da76d5.factory.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-seeed-sensecap-indicator-tft-2.8.0.6da76d5.factory.bin",
-          "sha256": "d366037e45d293bbf00947a7022ba0dacf5db93bc1e1883eb376ac894bc6d660",
-          "bytes": 3904320
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-seeed-sensecap-indicator-tft-2.8.0.6da76d5.factory.bin",
+          "sha256": "095cd2120cf14ba2d92dd4abb0bde62accb6818e96b4520c0660d38744804d17",
+          "bytes": 3891888
         },
         "littlefs-seeed-sensecap-indicator-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/littlefs-seeed-sensecap-indicator-tft-2.8.0.6da76d5.bin",
-          "sha256": "f593cfbbbf607af1f9edbffe57f09a33ef6c1bfded102236ed7e11801532363c",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/littlefs-seeed-sensecap-indicator-tft-2.8.0.6da76d5.bin",
+          "sha256": "dbcf6fd0c0785bfdbac5db24fd2ba80c686fd754d42fb217e4683121fe3006af",
           "bytes": 1572864
         }
       }
@@ -374,27 +374,27 @@
         "hasMui": true,
         "partitionScheme": "16MB"
       },
-      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-t-deck-tft-2.8.0.6da76d5.mt.json",
-      "manifestSha256": "ba0a0d27c4119e18ecc0c1141f90f6ba596e2f5841550efe341197d0b15a1f00",
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-t-deck-tft-2.8.0.6da76d5.mt.json",
+      "manifestSha256": "d1565a81e5dbd9c1732d8a3127456f386a31d94295f72abb855779586352eb7e",
       "files": {
         "firmware-t-deck-tft-2.8.0.6da76d5.mt.json": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-t-deck-tft-2.8.0.6da76d5.mt.json",
-          "sha256": "ba0a0d27c4119e18ecc0c1141f90f6ba596e2f5841550efe341197d0b15a1f00",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-t-deck-tft-2.8.0.6da76d5.mt.json",
+          "sha256": "d1565a81e5dbd9c1732d8a3127456f386a31d94295f72abb855779586352eb7e",
           "bytes": 2052
         },
         "firmware-t-deck-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-t-deck-tft-2.8.0.6da76d5.bin",
-          "sha256": "3824285d4a5483449ef7df4d81512caabfcb07ee02082048c54d55c2787d8c77",
-          "bytes": 3864592
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-t-deck-tft-2.8.0.6da76d5.bin",
+          "sha256": "6b4b89e395dba0ae72b07750d74075a3554273c1e667c764b3a29b319726b5c4",
+          "bytes": 3853440
         },
         "firmware-t-deck-tft-2.8.0.6da76d5.factory.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-t-deck-tft-2.8.0.6da76d5.factory.bin",
-          "sha256": "b70a83854fae5d6e937a00d1069daf592e6e08917deda3a7875a3c367615299c",
-          "bytes": 3930128
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-t-deck-tft-2.8.0.6da76d5.factory.bin",
+          "sha256": "ada7b1c086a4e19114cfab5676c4fc7d3ece2de7292104026ff0c2ec51286426",
+          "bytes": 3918976
         },
         "littlefs-t-deck-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/littlefs-t-deck-tft-2.8.0.6da76d5.bin",
-          "sha256": "7c1698ebb6147ec8e9f46c024ac1d657bb69133bc868223c18755c3ac98e626f",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/littlefs-t-deck-tft-2.8.0.6da76d5.bin",
+          "sha256": "07c223656868f6fc8c6ad72684c75689221cd84d2278f22d809f99a4934c543d",
           "bytes": 3538944
         }
       }
@@ -417,27 +417,27 @@
           "MUI tester"
         ]
       },
-      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-unphone-tft-2.8.0.6da76d5.mt.json",
-      "manifestSha256": "1a7995fb4e05b3d9bf8675fc75c403c4201cd3bdc4a1e83c915348e328d5b31c",
+      "manifestUrl": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-unphone-tft-2.8.0.6da76d5.mt.json",
+      "manifestSha256": "d9a642d5f8f2985353cc61d85cc65add913a21d69ef0872ba135c954de6dcf5b",
       "files": {
         "firmware-unphone-tft-2.8.0.6da76d5.mt.json": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-unphone-tft-2.8.0.6da76d5.mt.json",
-          "sha256": "1a7995fb4e05b3d9bf8675fc75c403c4201cd3bdc4a1e83c915348e328d5b31c",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-unphone-tft-2.8.0.6da76d5.mt.json",
+          "sha256": "d9a642d5f8f2985353cc61d85cc65add913a21d69ef0872ba135c954de6dcf5b",
           "bytes": 1830
         },
         "firmware-unphone-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-unphone-tft-2.8.0.6da76d5.bin",
-          "sha256": "97c78ddb1dc9bc329497b51d817d2579418627ade5e51863c7cc6330eff61ed9",
-          "bytes": 3735280
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-unphone-tft-2.8.0.6da76d5.bin",
+          "sha256": "78894d441f25bb090821789995600d8208acc7f47f4a910bcbc888644dddcbd1",
+          "bytes": 3722896
         },
         "firmware-unphone-tft-2.8.0.6da76d5.factory.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-unphone-tft-2.8.0.6da76d5.factory.bin",
-          "sha256": "818892eb480975701d00c1a8fa0549eb93ef7aebacd037e1484c83f1886631a3",
-          "bytes": 3800816
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/firmware-unphone-tft-2.8.0.6da76d5.factory.bin",
+          "sha256": "7302b0939bacde887e0d82caf0d48233b9350b2926fac318c0fd2dc15f4b2e1f",
+          "bytes": 3788432
         },
         "littlefs-unphone-tft-2.8.0.6da76d5.bin": {
-          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/littlefs-unphone-tft-2.8.0.6da76d5.bin",
-          "sha256": "868d898345c118f9f0e1b807a4b989c747a7ef529a3b59f2f585e06629342a3d",
+          "url": "https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260827-d64e30d/littlefs-unphone-tft-2.8.0.6da76d5.bin",
+          "sha256": "dbcf6fd0c0785bfdbac5db24fd2ba80c686fd754d42fb217e4683121fe3006af",
           "bytes": 1572864
         }
       }
