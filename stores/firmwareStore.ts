@@ -41,7 +41,7 @@ import {
   getMuiCandidateFileUrl,
   getMuiCandidateFirmwareResource,
   getMuiCandidateReleaseManifest,
-  MUI_CANDIDATE_ID,
+  isMuiCandidateId,
   resolveMuiCandidateTarget,
 } from '~/utils/muiCandidate'
 
@@ -406,12 +406,12 @@ export const useFirmwareStore = defineStore('firmware', {
         this.releaseManifest = { version: firmware.prBuild.version, targets: firmware.prBuild.targets }
       }
 
-      if (muiTesterOnly && firmware.id === MUI_CANDIDATE_ID) {
+      if (muiTesterOnly && isMuiCandidateId(firmware.id)) {
         this.releaseManifest = await getMuiCandidateReleaseManifest()
       }
 
       // Fetch release notes if not already present
-      if (firmware.id && !firmware.prBuild && !(muiTesterOnly && firmware.id === MUI_CANDIDATE_ID) && (!firmware.release_notes || firmware.release_notes.trim().length === 0)) {
+      if (firmware.id && !firmware.prBuild && !(muiTesterOnly && isMuiCandidateId(firmware.id)) && (!firmware.release_notes || firmware.release_notes.trim().length === 0)) {
         firmware.release_notes = await fetchReleaseNotes(firmware.id)
       }
 
@@ -421,7 +421,7 @@ export const useFirmwareStore = defineStore('firmware', {
       }
 
       // Fetch the release manifest that lists all available targets
-      if (firmware.id && !firmware.prBuild && !(muiTesterOnly && firmware.id === MUI_CANDIDATE_ID)) {
+      if (firmware.id && !firmware.prBuild && !(muiTesterOnly && isMuiCandidateId(firmware.id))) {
         const releaseManifest = await fetchReleaseManifest(firmware.id)
         if (releaseManifest) {
           this.releaseManifest = releaseManifest
@@ -436,8 +436,8 @@ export const useFirmwareStore = defineStore('firmware', {
       })
     },
     getReleaseFileUrl(fileName: string): string {
-      if (muiTesterOnly && this.selectedFirmware?.id === MUI_CANDIDATE_ID) {
-        const releaseTag = getCachedMuiCandidateManifest()?.releaseTag || 'mui-node-list-20260824-0d652f6'
+      if (muiTesterOnly && isMuiCandidateId(this.selectedFirmware?.id)) {
+        const releaseTag = getCachedMuiCandidateManifest()!.releaseTag
         return `https://rcgv1.github.io/mui-web-flasher/firmware/${releaseTag}/${fileName}`
       }
       // PR build files come from artifact zips, not meshtastic.github.io
@@ -588,7 +588,7 @@ export const useFirmwareStore = defineStore('firmware', {
      * @returns True if the target exists in the release manifest
      */
     isTargetAvailable(targetBoard: string): boolean {
-      if (muiTesterOnly && this.selectedFirmware?.id === MUI_CANDIDATE_ID) {
+      if (muiTesterOnly && isMuiCandidateId(this.selectedFirmware?.id)) {
         return !!resolveMuiCandidateTarget(getCachedMuiCandidateManifest(), targetBoard)
       }
       if (!this.releaseManifest?.targets) return false
@@ -614,7 +614,7 @@ export const useFirmwareStore = defineStore('firmware', {
         return false
       }
 
-      if (muiTesterOnly && this.selectedFirmware.id === MUI_CANDIDATE_ID) {
+      if (muiTesterOnly && isMuiCandidateId(this.selectedFirmware.id)) {
         try {
           const manifest = await fetchMuiCandidateTargetManifest(targetBoard)
           if (manifest) {
@@ -1097,7 +1097,7 @@ export const useFirmwareStore = defineStore('firmware', {
         return convertToBinaryString(new Uint8Array(arrayBuffer))
       }
       if (this.selectedFirmware?.id) {
-        if (muiTesterOnly && this.selectedFirmware.id === MUI_CANDIDATE_ID) {
+        if (muiTesterOnly && isMuiCandidateId(this.selectedFirmware.id)) {
           const url = await getMuiCandidateFileUrl(fileName)
           if (!url) {
             throw new Error(`MUI candidate manifest does not list ${fileName}`)

@@ -207,11 +207,11 @@ describe('deviceStore MUI tester candidate manifest', () => {
     ]
     const fetchMock = vi.mocked(fetch)
     fetchMock.mockResolvedValueOnce(jsonResponse({
-      id: 'v2.8.0.0d652f6',
-      version: '2.8.0.0d652f6',
+      id: 'v2.8.0.6da76d5',
+      version: '2.8.0.6da76d5',
       title: 'MUI virtual node-list tester firmware (all MUI targets)',
       releaseNotes: 'Tester notes',
-      releaseTag: 'mui-node-list-20260824-0d652f6',
+      releaseTag: 'mui-node-list-20260825-6da76d5',
       buildTimestamp: '2026-08-24T23:37:58Z',
       testerNotes: ['Add/receive 250 nodes.'],
       source: {
@@ -224,7 +224,7 @@ describe('deviceStore MUI tester candidate manifest', () => {
         board: device.platformioTarget.endsWith('-tft') ? device.platformioTarget : `${device.platformioTarget}-tft`,
         platform: 'esp32s3',
         device,
-        manifestUrl: `https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260824-0d652f6/firmware-${device.platformioTarget.endsWith('-tft') ? device.platformioTarget : `${device.platformioTarget}-tft`}-2.8.0.0d652f6.mt.json`,
+        manifestUrl: `https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-${device.platformioTarget.endsWith('-tft') ? device.platformioTarget : `${device.platformioTarget}-tft`}-2.8.0.6da76d5.mt.json`,
         manifestSha256: 'a'.repeat(64),
         files: {},
       })),
@@ -262,7 +262,7 @@ describe('deviceStore MUI tester candidate manifest', () => {
     expect(useFirmwareStore().$state.shouldInstallMui).toBe(true)
 
     const firmwareStore = useFirmwareStore()
-    firmwareStore.$state.selectedFirmware = { id: 'v2.8.0.0d652f6', title: 'MUI virtual node-list tester firmware' }
+    firmwareStore.$state.selectedFirmware = { id: 'v2.8.0.6da76d5', title: 'MUI virtual node-list tester firmware' }
     firmwareStore.$state.releaseManifest = await getMuiCandidateReleaseManifest()
 
     for (const device of testerDevices) {
@@ -271,5 +271,7 @@ describe('deviceStore MUI tester candidate manifest', () => {
       expect(candidateTarget?.device.platformioTarget).toBe(device.platformioTarget)
       expect(firmwareStore.isTargetAvailable(device.platformioTarget), device.platformioTarget).toBe(true)
     }
+    expect(firmwareStore.getReleaseFileUrl('firmware-heltec-v4-tft-2.8.0.6da76d5.bin'))
+      .toBe('https://rcgv1.github.io/mui-web-flasher/firmware/mui-node-list-20260825-6da76d5/firmware-heltec-v4-tft-2.8.0.6da76d5.bin')
   })
 })

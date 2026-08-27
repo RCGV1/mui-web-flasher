@@ -42,10 +42,12 @@ export interface CandidateManifest {
   targets: CandidateTarget[]
 }
 
-export const MUI_CANDIDATE_ID = 'v2.8.0.0d652f6'
-
 let candidatePromise: Promise<CandidateManifest> | undefined
 let candidateCache: CandidateManifest | undefined
+
+export function isMuiCandidateId(id: string | undefined): boolean {
+  return id !== undefined && id === candidateCache?.id
+}
 
 export function resolveMuiCandidateTarget(candidate: CandidateManifest | undefined, targetBoard: string): CandidateTarget | undefined {
   if (!candidate || !targetBoard) return undefined
